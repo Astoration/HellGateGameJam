@@ -45,4 +45,10 @@ public class Member{
             hunger = Mathf.Clamp(value, 0, 100);
         }
     }
+
+    public void Update(){
+        hunger -= 20;
+        sleepy -= 20;
+        condition -= 10;
+    }
 }
