@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class SelectScene : Singleton<SelectScene> {
 
+    // 이미 본 아이템들
+    public List<Gamedata.GameItem> m_listShowingGameItem = new List<Gamedata.GameItem>();   
+
     public CardObject[] m_objCard;
     public float        m_fFadeTime;
     private int m_nInitCount = 0;
-
-    private void Awake()
-    {
-        m_objCard = new CardObject[3];
-    }
-
+    
     void Start () {
         StartCoroutine(GameUtility.Instance.FadeIn(2.0f));
+
+        InitCards();
     }
 
     public void Update()
@@ -29,6 +29,12 @@ public class SelectScene : Singleton<SelectScene> {
         {
             StartCoroutine(GameUtility.Instance.FadeOut(2.0f));
         }
+
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            PopupEvent.Instantiate();
+        }
+        
     }
 
     private void InitCards()
@@ -41,8 +47,10 @@ public class SelectScene : Singleton<SelectScene> {
             int rand = Random.Range(0, 1);
             if (0 == rand)
             {
-                //card.Init(Gamedata.GameItem.eHot6);
-                card.Init(Gamedata.m_listGameItem[Random.Range(0, Gamedata.m_listGameItem.Count)]);
+                // 이미 본 리스트와 중복 체크, 추가 필요
+                int select = Random.Range(0, Gamedata.m_listGameItem.Count);
+                card.Init(Gamedata.m_listGameItem[select]);
+                m_listShowingGameItem.Add((Gamedata.GameItem)select);
             }
             else
             {
