@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class SelectScene : Singleton<SelectScene> {
 
-    // 이미 본 아이템들
-    public List<Gamedata.GameItem> m_listShowingGameItem = new List<Gamedata.GameItem>();   
-
+    public List<string> m_listShowingGameItem    = new List<string>();      // 이미 본 아이템들
+  
     public CardObject[] m_objCard;
     public float        m_fFadeTime;
-    private int m_nInitCount = 0;
-    
+
+    //public float        m_
+   
     void Start () {
         StartCoroutine(GameUtility.Instance.FadeIn(2.0f));
 
@@ -27,7 +27,12 @@ public class SelectScene : Singleton<SelectScene> {
 
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            StartCoroutine(GameUtility.Instance.FadeOut(2.0f));
+            Debug.Log("1111");
+
+            StartCoroutine(GameUtility.Timer(2.0f, delegate
+            {
+                Debug.Log("gdgdgd");
+            }));
         }
 
         else if (Input.GetKeyDown(KeyCode.C))
@@ -39,7 +44,7 @@ public class SelectScene : Singleton<SelectScene> {
 
     private void InitCards()
     {
-        // json 불러오고 불러온 정보를 이용하여 데이터 세팅
+       
 
 
         foreach (var card in m_objCard)
@@ -48,17 +53,16 @@ public class SelectScene : Singleton<SelectScene> {
             if (0 == rand)
             {
                 // 이미 본 리스트와 중복 체크, 추가 필요
-                int select = Random.Range(0, Gamedata.m_listGameItem.Count);
-                card.Init(Gamedata.m_listGameItem[select]);
-                m_listShowingGameItem.Add((Gamedata.GameItem)select);
+              //  int select = Random.Range(0, Gamedata.m_listGameItem.Count);
+             //   card.Init(Gamedata.m_listGameItem[select]);
+              //  m_listShowingGameItem.Add((ItemInfo.type)select);
             }
             else
             {
-                card.Init(Gamedata.m_listDuplicationItem[Random.Range(0, Gamedata.m_listDuplicationItem.Count)]);
+              //  card.Init(Gamedata.m_listDuplicationItem[Random.Range(0, Gamedata.m_listDuplicationItem.Count)]);
             }
         }
-        m_nInitCount++;
-
+      
     }
 
 }

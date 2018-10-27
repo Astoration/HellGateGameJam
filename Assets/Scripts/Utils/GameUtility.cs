@@ -7,6 +7,20 @@ public class GameUtility : Singleton<GameUtility> {
 
     public Image    m_imgBlack;
 
+    public static IEnumerator Timer(float fSetTime, System.Action del = null)
+    {
+        float time = 0.0f;
+
+        while(time < fSetTime)
+        {
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        del();
+    }
+
     public IEnumerator FadeIn(float fadeTime)
     {
         Color color = m_imgBlack.color;
@@ -25,7 +39,6 @@ public class GameUtility : Singleton<GameUtility> {
             yield return null;
         }
     }
-
 
     public IEnumerator FadeOut(float fadeTime)
     {
