@@ -14,6 +14,11 @@ public class EventData{
 
 public class ResultInfo
 {
-    public List<string> method;
-    public List<int> amount;
+    public List<ActionInfo> action;
+}
+
+public class ActionInfo{
+    public string method;
+    public int amount;
+    public string log;
 }
