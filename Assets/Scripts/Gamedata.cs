@@ -25,14 +25,14 @@ public class EventInfo
 public class ItemInfo
 {
     public string Name;             // 아이템명
-    public int SingleUse;           // 일회성 
+    public int Consumable;          // 일회성 
     public string Description;      // 아이템 설명
 }
 
 public class Gamedata : Singleton<Gamedata> {
 
-    public static List<ItemInfo> m_listItem    = new List<ItemInfo>();
-    public static List<string> m_listInventory   = new List<string>();
+    public static List<ItemInfo> m_listItem         = new List<ItemInfo>();
+    public static List<ItemInfo> m_listInventory    = new List<ItemInfo>();
 
 
     // JsonFile
