@@ -13,8 +13,9 @@ public class OverPopup : MonoBehaviour {
         this.description.text = description;
     }
 
-    public static GameObject Instantiate(string title, string description,Vector3 position){
+    public static GameObject Instantiate(string title, string description,Vector2 position){
         var instantiated = Instantiate(Resources.Load("Popup/OverPopup"),FindObjectOfType<Canvas>().transform) as GameObject;
+        position = position - instantiated.GetComponent<RectTransform>().sizeDelta / 2f;
         instantiated.GetComponent<RectTransform>().anchoredPosition = position;
         instantiated.GetComponent<OverPopup>().Init(title, description);
         return instantiated;
