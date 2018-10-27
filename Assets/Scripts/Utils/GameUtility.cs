@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUtility : Singleton<GameUtility> {
 
@@ -60,5 +61,13 @@ public class GameUtility : Singleton<GameUtility> {
         }
 
         // SceneManager.LoadScene(0);
+    }
+
+    public IEnumerator ChangeScene(string strScene)
+    {
+        StartCoroutine(FadeOut(2.0f));
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene(strScene);
     }
 }
