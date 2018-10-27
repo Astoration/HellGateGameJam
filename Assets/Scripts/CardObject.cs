@@ -11,8 +11,11 @@ public class CardObject : MonoBehaviour {
     public Text m_textTitle;
     public Text m_textDesc;
 
+    private bool m_bIsClick = false;
+
     public void Init(ItemInfo info, DelegateOnSelect del)
     {
+        m_bIsClick = false;
         m_Iteminfo = info;
         m_delOnSelect = del;
 
@@ -30,6 +33,10 @@ public class CardObject : MonoBehaviour {
 
     public void OnSelect()
     {
-        m_delOnSelect(m_Iteminfo);
+        if (m_bIsClick == false)
+        {
+            m_bIsClick = true;
+            m_delOnSelect(m_Iteminfo);
+        }
     }
 }

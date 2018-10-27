@@ -63,6 +63,7 @@ public class SelectScene : Singleton<SelectScene> {
             card.Init(item, OnSelectCard);
         }
 
+        //StopAllCoroutines();
         StartCoroutine(StartCardSelect());
     }
 
@@ -75,6 +76,8 @@ public class SelectScene : Singleton<SelectScene> {
 
         if(m_nNowCardCount < m_nTotalCardCount)
             StartCoroutine(StartCardSelect());
+
+        Debug.Log("dddddd");
     }
 
     private void OnSelectCard(ItemInfo info)
@@ -90,7 +93,7 @@ public class SelectScene : Singleton<SelectScene> {
             m_listItem.Remove(info);
         }
 
-        StartCoroutine(StartCardSelect());
+        InitCards();
     }
 
 }
