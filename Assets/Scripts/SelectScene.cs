@@ -25,31 +25,32 @@ public class SelectScene : Singleton<SelectScene> {
         InitCards();
     }
 
-    /*
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            StartCoroutine(GameUtility.Instance.FadeIn(2.0f));
-        }
+            Debug.Log("----------------- m_listItem -------------------");
+            foreach (var i in Gamedata.m_listItem)
+            {
+                Debug.Log("<color=red> " + i.Name + ", " + i.Description + "</color>");
+            }
 
+            Debug.Log("----------------- Inventory -------------------");
+            foreach (var i in Gamedata.m_listInventory)
+            {
+                Debug.Log("<color=red> " + i.Name + ", " + i.Description + "</color>");
+            }
+        }
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            Debug.Log("1111");
-
-            StartCoroutine(GameUtility.Timer(2.0f, delegate
-            {
-                Debug.Log("gdgdgd");
-            }));
+            PopupInventory.Instantiate();
         }
 
         else if (Input.GetKeyDown(KeyCode.C))
         {
             PopupEvent.Instantiate();
         }
-        
     }
-    */
 
     private void InitCards()
     {
@@ -61,12 +62,18 @@ public class SelectScene : Singleton<SelectScene> {
             card.Init(item, OnSelectCard);
         }
 
-        // 제한 시간 내로 선택하지 않을 경우
-        StartCoroutine(GameUtility.Timer(m_fSelectTimeLimit, delegate
-        {
-            int rand = Random.Range(0, m_listItem.Count);
-            OnSelectCard(m_listItem[rand]);
-        }));
+        StartCoroutine(StartCardSelect());
+    }
+
+    private IEnumerator StartCardSelect()
+    {
+        yield return new WaitForSeconds(m_fSelectTimeLimit);
+
+        int rand = Random.Range(0, m_listItem.Count);
+        OnSelectCard(m_listItem[rand]);
+
+        if(m_nNowCardCount < m_nTotalCardCount)
+            StartCoroutine(StartCardSelect());
     }
 
     private void OnSelectCard(ItemInfo info)

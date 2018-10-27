@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LitJson;
+using System;
 
 public class EventInfo
 {
@@ -30,10 +31,9 @@ public class ItemInfo
 }
 
 public class Gamedata : Singleton<Gamedata> {
-
     public static List<ItemInfo> m_listItem         = new List<ItemInfo>();
     public static List<ItemInfo> m_listInventory    = new List<ItemInfo>();
-
+    public static Dictionary<string, Sprite> m_dicItem = new Dictionary<string, Sprite>();
 
     // JsonFile
     public TextAsset m_jsonItemList;
@@ -43,6 +43,17 @@ public class Gamedata : Singleton<Gamedata> {
     {
         DontDestroyOnLoad(this);
         LoadFromJsonFile();
+        LoadResource();
+    }
+
+    private void LoadResource()
+    {
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Item/Item");
+
+        foreach (Sprite sprite in sprites)
+        {
+            m_dicItem.Add(sprite.name, sprite);
+        }
     }
 
     private void LoadFromJsonFile()
