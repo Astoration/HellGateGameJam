@@ -16,8 +16,7 @@ public class SelectScene : Singleton<SelectScene> {
     public Image        m_imgBlack;
     public CardObject[] m_objCard;
     public float        m_fFadeTime         = 0.0f;         // 화면 페이드 타임
-    public float        m_fSelectTimeLimit    = 0.0f;       // 카트 뽑기 제한시간
-
+    public Text         m_textRemain;
     public int          m_nTotalCardCount   = 0;            // 플레이어가 가져올 카드 수
     public int          m_nNowCardCount     = 0;            // 현재 가져온 카드 수
    
@@ -52,12 +51,19 @@ public class SelectScene : Singleton<SelectScene> {
 
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            PopupEvent.Instantiate();
+            PopupSchedule.Instantiate();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            SetRecursionAlpha(m_objCard[0].gameObject, 1.0f);
         }
     }
 
     private void InitCards()
     {
+        m_textRemain.text = "남은 카드 수 : " + (m_nTotalCardCount - m_nNowCardCount);
+
         foreach (var card in m_objCard)
         {
             int rand = Random.Range(0, m_listItem.Count);
@@ -65,39 +71,69 @@ public class SelectScene : Singleton<SelectScene> {
           
             card.Init(item, OnSelectCard);
         }
-
-        //StopAllCoroutines();
-        StartCoroutine(StartCardSelect());
-    }
-
-    private IEnumerator StartCardSelect()
-    {
-        yield return new WaitForSeconds(m_fSelectTimeLimit);
-
-        int rand = Random.Range(0, m_listItem.Count);
-        OnSelectCard(m_listItem[rand]);
-
-        if(m_nNowCardCount < m_nTotalCardCount)
-            StartCoroutine(StartCardSelect());
-
-        Debug.Log("dddddd");
     }
 
     private void OnSelectCard(ItemInfo info)
     {
         m_nNowCardCount++;
-
-        // 인벤토리에 해당 아이템 추가
-        if(Gamedata.m_listInventory.Count < m_nTotalCardCount)
-            Gamedata.m_listInventory.Add(info);
-
+        Gamedata.m_listInventory.Add(info);
+        
         // 1회성 아이템 처리
         if (0 != info.Consumable) {
             m_listItem.Remove(info);
         }
 
+        if(0 == m_nTotalCardCount - m_nNowCardCount)
+        {
+            StartCoroutine(ChangeScene("MainScene"));
+        }
+
         InitCards();
     }
+
+    private void SetRecursionAlpha(GameObject obj, float alpha)
+    {
+        if(obj.GetComponent<Image>() != null)
+        {
+            Color color = obj.GetComponent<Image>().color;
+            obj.GetComponent<Image>().color = new Color(color.r, color.g, color.b, alpha);
+        }
+
+        if (obj.GetComponent<Text>() != null)
+        {
+            Color color = obj.GetComponent<Text>().color;
+            obj.GetComponent<Text>().color = new Color(color.r, color.g, color.b, alpha);
+        }
+
+        for (int i = 0; i < obj.transform.childCount; ++i)
+        {
+            SetRecursionAlpha(obj.transform.GetChild(i).gameObject, alpha);
+        }
+    }
+
+    public IEnumerator FadeOutCard(float fadeTime)
+    {
+       // m_objCard[0].
+        Color color = m_imgBlack.color;
+        float fTime = 0.0f;
+
+        color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+        m_imgBlack.gameObject.SetActive(true);
+
+        while (color.a < 1.0f)
+        {
+
+            fTime += Time.deltaTime / fadeTime;
+
+            color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+            m_imgBlack.color = color;
+
+            yield return null;
+        }
+
+
+    }
+
     public IEnumerator FadeIn(float fadeTime)
     {
         Color color = m_imgBlack.color;
@@ -135,9 +171,9 @@ public class SelectScene : Singleton<SelectScene> {
 
             yield return null;
         }
-
-        // SceneManager.LoadScene(0);
+     
     }
+
     public IEnumerator ChangeScene(string strScene)
     {
         StartCoroutine(FadeOut(2.0f));
