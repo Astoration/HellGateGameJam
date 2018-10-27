@@ -6,6 +6,7 @@ using System;
 
 [Serializable]
 public enum PositionType{
+    None,
     [StringValue("기획자")]
     Director,
     [StringValue("프로그래머")]
