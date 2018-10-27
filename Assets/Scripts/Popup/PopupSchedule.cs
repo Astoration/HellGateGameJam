@@ -15,6 +15,14 @@ public class PopupSchedule : MonoBehaviour {
         m_canvas = FindObjectOfType<Canvas>();
     }
 
+    private void Start()
+    {
+        foreach (var i in m_arrPart)
+        {
+            i.Init(OnSelect);
+        }
+    }
+
     public static PopupSchedule Instantiate()
     {
         GameObject obj = Instantiate(Resources.Load<GameObject>("Popup/PopupSchedule"));
@@ -29,17 +37,8 @@ public class PopupSchedule : MonoBehaviour {
         obj.transform.SetParent(m_canvas.transform);
         popup.GetComponent<RectTransform>().localPosition = Vector3.zero;
         popup.GetComponent<RectTransform>().localScale = Vector3.one;
-        popup.Init();
 
         return popup;
-    }
-
-    public void Init ()
-    {
-        foreach(var i in m_arrPart)
-        {
-            i.Init(OnSelect);
-        }
     }
 
     private void OnSelect(PopupSchedulePart.DevelopmentPart part, PopupSchedulePart.Act act)
