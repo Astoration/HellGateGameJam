@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CardObject : MonoBehaviour {
 
-    Gamedata.GameItem m_typeItem;
+    public Gamedata.GameItem m_typeItem;
 
 
     public void Init(Gamedata.GameItem type)

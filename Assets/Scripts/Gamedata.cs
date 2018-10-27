@@ -2,6 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class EventInfo
+{
+    public enum SelectType
+    {
+        eTextSelect,
+        eItemConsume,
+        eItemGain
+    }
+
+    //public enum 
+
+    public int               m_nIndex;          // 이벤트 식별자
+    public SelectType        m_typeSelect;      // 이벤트 타입
+    
+
+}
+
 public class Gamedata : Singleton<Gamedata> {
 
     public static List<GameItem> m_listGameItem = new List<GameItem>();                 // 중복 선택 불가 아이템
@@ -23,6 +40,7 @@ public class Gamedata : Singleton<Gamedata> {
 
     };
 
+    
     private void Awake()
     {
         // Test용 데이터 추가
