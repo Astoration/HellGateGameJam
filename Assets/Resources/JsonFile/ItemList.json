@@ -1,78 +1,72 @@
 [
  {
    "Name": "핫식스",
-   "Description": "힐링포션"
+   "Image": "Hot6",
+   "unique item": 0,
+   "Description": "힐링 포션. 잠을 잘 수 없는 당신을 위해",
+   "효과": "스캐쥴에서 핫식스를 선택할 수 있음"
  },
  {
-   "Name": "위장약",
-   "Description": ""
- },
- {
-   "Name": "토끼귀",
-   "Description": "프로그래머의 취향"
- },
- {
-   "Name": "치킨",
-   "Description": "말이 필요한가 ? "
+   "Name": "컵라면",
+   "Image": "CupNuddle",
+   "unique item": 0,
+   "Description": "먹고 살기 위해 필요한 것",
+   "효과": "스캐쥴에서 식사를 선택할 수 있음"
  },
  {
    "Name": "야구 방망이",
-   "Description": "게으름 삭제"
+   "Image": "Bat",
+   "unique item": 0,
+   "Description": "옛부터 내려오던 약",
+   "효과": "아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "치킨",
+   "Image": "Chicken",
+   "unique item": 0,
+   "Description": "말이 필요한가 ? ",
+   "효과": "아이템 소모 이벤트에서 사용 가능"
  },
  {
    "Name": "담배",
-   "Description": ""
+   "Image": "Cigarette",
+   "unique item": 1,
+   "Description": "골초를 위한 필수 아이템",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
  },
  {
    "Name": "사촌 누나의 연락처",
-   "Description": "그냥 쪼아 "
+   "Image": "Contact",
+   "unique item": 1,
+   "Description": "참고로 사촌 누나는 매우 예쁘다",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
  },
  {
    "Name": "무선 키보드",
-   "Description": ""
+   "Image": "Keyboard",
+   "unique item": 1,
+   "Description": "노트북 키보드가 불편하다면 바로 이것이 해결책",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
  },
  {
-   "Name": "마우스",
-   "Description": "피로도를 하락시켜 능률 향상?"
+   "Name": "타블렛 펜심",
+   "Image": "Pen",
+   "unique item": 1,
+   "Description": "이게 없으면 타블렛을 쓸 수 없다",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
  },
  {
-   "Name": "뱀파이어관",
-   "Description": "체력을 풀로 회복 / 잠 x2 배율 회복 "
+   "Name": "위장약",
+   "Image": "Drug",
+   "unique item": 1,
+   "Description": "위장이 약한 사람을 위한 솔루션",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
  },
  {
-   "Name": "타블렛",
-   "Description": ""
- },
- {
-   "Name": "보조모니터",
-   "Description": "능력치  보조 조정 템 "
- },
- {
-   "Name": "선그라스",
-   "Description": "수면내성 "
- },
- {
-   "Name": "요크셔",
-   "Description": "취향 템 / 디자이너의 이벤트 게으름 삭제"
- },
- {
-   "Name": "콜라시리즈",
-   "Description": "체력 템 "
- },
- {
-   "Name": "키보드1",
-   "Description": "취향 템 프로그래머의 수치 향상"
- },
- {
-   "Name": "키보드2",
-   "Description": "취향 템 프로그래머의 수치 향상"
- },
- {
-   "Name": "펜",
-   "Description": "취향템 기획자의 수치 조절"
- },
- {
-   "Name": "책",
-   "Description": ""
+   "Name": "토끼 머리띠",
+   "Image": "HairBand",
+   "unique item": 1,
+   "Description": "소화할 수 있는 사람이 극히 드물다",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
  }
 ]

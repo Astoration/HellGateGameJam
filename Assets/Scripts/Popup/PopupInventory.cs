@@ -33,6 +33,8 @@ public class PopupInventory : MonoBehaviour {
         PopupInventory popup = obj.GetComponent<PopupInventory>();
         obj.transform.SetParent(m_canvas.transform);
         popup.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+        popup.Init();
+
         return popup;
     }
 

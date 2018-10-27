@@ -44,6 +44,7 @@ public class SelectScene : Singleton<SelectScene> {
         else if (Input.GetKeyDown(KeyCode.B))
         {
             PopupInventory.Instantiate();
+            
         }
 
         else if (Input.GetKeyDown(KeyCode.C))
@@ -81,12 +82,15 @@ public class SelectScene : Singleton<SelectScene> {
         m_nNowCardCount++;
 
         // 인벤토리에 해당 아이템 추가
-        Gamedata.m_listInventory.Add(info);
+        if(Gamedata.m_listInventory.Count < m_nTotalCardCount)
+            Gamedata.m_listInventory.Add(info);
 
         // 1회성 아이템 처리
         if (0 != info.Consumable) {
             m_listItem.Remove(info);
         }
+
+        StartCoroutine(StartCardSelect());
     }
 
 }

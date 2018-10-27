@@ -24,8 +24,10 @@ public class MouseOverable : EventTrigger
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        base.OnPointerEnter(eventData);
-        popup = OverPopup.Instantiate(title, description, eventData.position);
+        if (title != ""){
+            base.OnPointerEnter(eventData);
+            popup = OverPopup.Instantiate(title, description, eventData.position);
+        }
     }
 
     public override void OnPointerExit(PointerEventData eventData)
