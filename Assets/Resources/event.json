@@ -1,0 +1,1177 @@
+
+[
+	{
+		"image": "profile3", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "게임 이야기를 하던 도중 프로그래머와 아티스트가 싸우기 시작했다.\n프로그래머는 최고의 RPG은 파이널 판타지라고 이야기하고 아티스트는 젤다라고 이야기한다.", 
+		"choose": [
+			"파이널 판타지가 최고", 
+			"젤다가 최고"
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 20
+					},
+					{
+						"method": "DescreaseCondition", 
+						"target": "Art",
+						"amount": 20, 
+						"log": "프로그래머의 개발력이 20 상승했다.\n빈정상한 아티스트의 개발력이 20 하락했다."
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"amount": 20
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"log": "빈정상한 프로그래머의 개발력이 20 하락했다.\n아티스트의 개발력이 20 상승했다.",		
+						"amount": 20
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile4", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "기획자에게 끝내주는 아이디어가 떠올랐다.\n작업한 걸 좀 바꿔야할 것 같지만 분명 엄청나게 재미있을 거라고 한다.", 
+		"choose": [
+			"격려한다", 
+			"주먹으로 다스린다"
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 100
+					},
+					{
+						"method": "DecreaseProcess", 
+						"target": "Director",
+						"amount": 50
+					},
+										{
+						"method": "DecreaseProcess", 
+						"target": "Programmer",
+						"amount": 50
+					},
+										{
+						"method": "DecreaseProcess", 
+						"target": "Art",
+						"log": "기획자의 개발력이 대폭 상승했지만 일부 작업물을 사용할 수 없게 됐다.",
+						"amount": 50
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"log": "기획자는 풀이 죽었다. 개발력이 20 하락했다.",
+						"amount": 20
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile5", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "아티스트에게 잠자고 있던 완벽주의자 성향이 깨어나려하고 있다. 작업을 뜯어 고치자고 한다.", 
+		"choose": [
+			"격려한다", 
+			"생각을 뜯어고친다"
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 100
+					},
+					{
+						"method": "DecreaseProcess", 
+						"target": "Director",
+						"amount": 50
+					},
+										{
+						"method": "DecreaseProcess", 
+						"target": "Programmer",
+						"amount": 50
+					},
+										{
+						"method": "DecreaseProcess", 
+						"target": "Art",
+						"log": "아티스트의 개발력이 대폭 상승했지만 일부 작업물을 사용할 수 없게 됐다.",
+						"amount": 50
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"log": "풀죽은 아티스트의 개발력이 20 하락했다.",
+						"amount": 20
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile4", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "옆 팀에서 기획자를 잠깐 빌려주면 컵라면을 준다고 한다.", 
+		"choose": [
+			"빌려준다.", 
+			"거절한다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"amount": 20
+					},
+					{
+						"method": "AddFood", 
+						"log": "기획자는 의자를 나르고 와서 컵라면을 받아왔다.\n피곤해져 개발력이 20 하락했지만 컵라면을 하나 얻었다.",					
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"log": "우리도 바쁘다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile2", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "옆 팀에서 프로그래머를 잠깐 빌려주면 컵라면을 준다고 한다.", 
+		"choose": [
+			"빌려준다.", 
+			"거절한다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"amount": 20
+					},
+					{
+						"method": "AddFood", 
+						"log": "프로그래머는 라면을 끓여주고 와서 컵라면을 받아왔다. 피곤해져 개발력이 20 하락했지만 컵라면을 하나 얻었다."	,					
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"log": "우리도 바쁘다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile1", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "옆 팀에서 아티스트를 잠깐 빌려주면 컵라면을 준다고 한다.", 
+		"choose": [
+			"빌려준다.", 
+			"거절한다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Art",
+						"amount": 20
+					},
+					{
+						"method": "AddFood", 
+						"log": "아티스트는 캐리커쳐를 그리고와서 컵라면를 받아왔다. 피곤해져 개발력이 20 하락했지만 컵라면을 하나 얻었다.."	,					
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"log": "우리도 바쁘다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile4", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "옆 팀에서 기획자를 잠깐 빌려주면 핫식스를 준다고 한다..", 
+		"choose": [
+			"빌려준다.", 
+			"거절한다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"amount": 20
+					},
+					{
+						"method": "AddHotsix", 
+						"log": "기획자는 의자를 나르고 와서 핫식스를 받아왔다. 피곤해져 개발력이 20 하락했지만 핫식스를 하나 얻었다.",						
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"log": "우리도 바쁘다."
+					}
+				]
+			}
+		]
+	},	
+	{
+		"image": "profile3", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "옆 팀에서 프로그래머를 잠깐 빌려주면 핫식스를 준다고 한다.", 
+		"choose": [
+			"빌려준다.", 
+			"거절한다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"amount": 20
+					},
+					{
+						"method": "AddHotsix", 
+						"log": " 프로그래머는 라면을 끓여주고 와서 컵라면을 받아왔다. 피곤해져 개발력이 20 하락했지만 핫식스를 하나 얻었다.",						
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"log": "우리도 바쁘다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile5", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "옆 팀에서 아티스트를 잠깐 빌려주면 핫식스를 준다고 한다.", 
+		"choose": [
+			"빌려준다.", 
+			"거절한다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Art",
+						"amount": 20
+					},
+					{
+						"method": "AddHotsix", 
+						"log": " 아티스트는 캐리커쳐를 그리고와서 핫식스를 받아왔다. 피곤해져 개발력이 20 하락했지만 핫식스를 하나 얻었다.",						
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"log": "우리도 바쁘다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile4", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "게임 이야기를 하던 도중 기획자와 프로그래머가 싸우기 시작했다. 기획자는 최고의 콘솔이 PS라고 이야기하고 프로그래머는 엑박이라고 이야기한다.", 
+		"choose": [
+			"액박이 최고", 
+			"플스가 최고"
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 20
+					},
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"amount": 20, 
+						"log": "기획자의 개발력이 20 상승했다. 빈정상한 프로그래머는 개발력이 20 하락했다."	
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"amount": 20
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"log": "빈정상한 기획자의 개발력이 20 하락했다. 프로그래머의 개발력이 하락했다.",		
+						"amount": 20
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile2", 
+		"useItem": false, 
+		"onIndex": false, 
+		"content": "프로그래머에게 영감이 떠올랐다. 프로그래머는 폭주하려고 하고 있다.", 
+		"choose": [
+			"격려한다", 
+			"폭주를 말린다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 100
+					},
+					{
+						"method": "DecreaseProcess", 
+						"target": "Director",
+						"amount": 50
+					},
+										{
+						"method": "DecreaseProcess", 
+						"target": "Programmer",
+						"amount": 50
+					},
+										{
+						"method": "DecreaseProcess", 
+						"target": "Art",
+						"log": "프로그래머의 개발력이 대폭 상승했지만 일부 작업물을 사용할 수 없게 됐다.",
+						"amount": 50
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"log": "풀죽은 프로그래머의 개발력이 20 하락했다.",
+						"amount": 20
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile3", 
+		"useItem": true, 
+		"onIndex": true, 
+		"content": "노트북으로 작업하던 개발자의 손목에 무리가 왔다. 개발자가 편히 작업할 수 있도록 무선 키보드를 달라고 한다.", 
+		"choose": [
+			"무선 키보드", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 50
+					},
+					{
+						"method": "무선 키보드감소", 
+						"log": "무선 키보드 덕분에 프로그래머의 손목 부상을 방지할 수 있었다. 개발자는 열정을 불태워 개발력이 50상승했다.",						
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Debug4", 
+						"target": "Programmer",
+						"amount": 1 ,
+						"log": "노트북으로 무리하던 개발자의 손목에 터널 증후군이 나타났다. 부상 디버프를 얻었다. 몇 시간 정도 지속될 것 같다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile1", 
+		"useItem": true, 
+		"onIndex": true, 
+		"content": "게임잼 전날 차인 아티스트가 여자친구가 보고 싶다며 울기 시작한다.", 
+		"choose": [
+			"사촌 누나의 연락처", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 50
+					},
+					{
+						"method": "사촌 누나의 연락처감소", 
+						"log": "아티스트는 슬펐지만 사촌 누나가 예뻐서 슬픔을 이겨내고 전의를 불태웠다. 개발력이 50 상승했다."		,				
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Debuf3", 
+						"target": "Art",
+						"amount": 1 ,
+						"log": "좋은 사람 만날 거라 이야기했지만 그도, 나도 믿지 않았다. 아티스트는 멘탈 붕괴 디버프에 걸렸다. 몇 시간은 지속될 것 같다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile5", 
+		"useItem": true, 
+		"onIndex": true, 
+		"content": "작업하던 아티스트의 타블렛 펜심이 다 닳았다. ", 
+		"choose": [
+			"타블렛 펜심", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 50
+					},
+					{
+						"log": "아티스트는 감격하며 개발의지를 불태웠다. 개발력이 50 상승했다."						
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Debug4", 
+						"target": "Art",
+						"amount": 1 ,
+						"log": "마우스로 무리해서 작업하던 아티스트가 터널 증후군 부상 디버프를 얻었다. 몇시간은 지속될 것 같다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile4", 
+		"useItem": true, 
+		"onIndex": true, 
+		"content": "골초인 기획자에게 금단 현상이 일어났다.", 
+		"choose": [
+			"담배", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 50
+					},
+					{
+						"log": "담배를 물려주니 기획자의 머리가 돌아간다. 개발력이 50 상승했다."	,					
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Debuf3", 
+						"target": "Director",
+						"amount": 1 ,
+						"log": "기획자는 아무 것도 생각나지 않는다. 멘탈붕괴 디버프를 얻었다. 몇 시간 정도 지속될 것 같다."
+					}
+				]
+			}
+		]
+	},	
+
+	{
+		"image": "profile2", 
+		"useItem": true, 
+		"onIndex": true, 
+		"content": "저장하지 않고 5시간 동안 코딩하던 중 블루 스크린이 떴다. 프로그래머가 경기를 일으키기 시작한다.", 
+		"choose": [
+			"토끼 머리띠", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 50
+					},
+					{
+						"log": "취향이 독특한 4차원 프로그래머는 매우 흡족해하며 진정됐다. 개발력이 +50 상승했다."	,					
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Debuf3", 
+						"target": "Programmer",
+						"amount": 1 ,
+						"log": "정신적 충격을 받은 프로그래머는 멘탈 붕괴 디버프에 걸렸다. 몇 시간은 지속될 것 같다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile4", 
+		"useItem": true, 
+		"onIndex": true, 
+		"content": "기획자가 스트레스로 폭식을 한다.", 
+		"choose": [
+			"위장약", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 50
+					},
+					{
+						"log": "기획자는 소화를 마치고 개발에 몰두한다. 개발력이 50 상승했다."	,					
+						"amount": 1
+					}
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Debug4", 
+						"target": "Director",
+						"amount": 1 ,
+						"log": "기획자는 배탈이 났다. 부상으로 디버프를 획득했다. 몇 시간 정도는 지속 될 것 같다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile4", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "컵라면에 질린 기획자가 참다 못해 폭동을 일으켰다. 기획자가 치킨을 부르짖는다.", 
+		"choose": [
+			"치킨", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseHunger", 
+						"target": "Director",
+						"amount": 100
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 10
+					},
+					{
+						"log": "배부른 기획자의 뇌가 맑아져 개발력이 10 상승했다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DecreaseHunger", 
+						"target": "Director",
+						"amount": 25 ,
+						"log": " 치킨은 한정 수량이었다. 옆팀에서 치킨 먹는 모습만 지켜보던 기획자의 포만감이 하락했다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile3", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "컵라면에 질린 프로그래머가 참다 못해 폭동을 일으켰다. 기획자가 치킨을 부르짖는다.", 
+		"choose": [
+			"치킨", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseHunger", 
+						"target": "Programmer",
+						"amount": 100
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 10
+					},
+					{
+						"method": "치킨감소", 
+						"log": "배부른 개발자의 뇌가 맑아져 개발력이 10 상승했다."			,			
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DecreaseHunger", 
+						"target": "Programmer",
+						"amount": 25 ,
+						"log": " 치킨은 한정 수량이었다. 옆팀에서 치킨 먹는 모습만 지켜보던 기획자의 포만감이 하락했다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile1", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "컵라면에 질린 아티스트가 참다 못해 폭동을 일으켰다. 기획자가 치킨을 부르짖는다.", 
+		"choose": [
+			"치킨", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseHunger", 
+						"target": "Art",
+						"amount": 100
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 10
+					},
+					{
+						"method": "치킨감소", 
+						"log": "배부른 아티스트의 뇌가 맑아져 개발력이 10 상승했다.",						
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DecreaseHunger", 
+						"target": "Art",
+						"amount": 25 ,
+						"log": " 치킨은 한정 수량이었다. 옆팀에서 치킨 먹는 모습만 지켜보던 아티스트의 포만감이 하락했다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile4", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "기획자가 자신은 잠이 많아서 더는 자야한다고 한다. 때려 죽어도 자야한다고 한다.", 
+		"choose": [
+			"야구 방망이", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseSleepy", 
+						"target": "Director",
+						"amount": 100
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 10
+					},
+					{
+						"log": "예로부터 말을 안들을 떄는 매가 약이었다. 마사지를 받아 잠이 깬 기획자의 개발력이 10 상승했다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DecreaseSleepy", 
+						"target": "Director",
+						"amount": 25 ,
+						"log": "기획자에게 힘내라고 응원했지만 기획자는 더 졸려졌다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile2", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "개발자가 자신은 잠이 많아서 더는 자야한다고 한다. 때려 죽어도 자야한다고 한다.", 
+		"choose": [
+			"야구 방망이", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseSleepy", 
+						"target": "Programmer",
+						"amount": 100
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 10
+					},
+					{
+						"log": "예로부터 말을 안들을 떄는 매가 약이었다. 마사지를 받아 잠이 깬 프로그래머의 개발력이 10 상승했다.",						
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DecreaseSleepy", 
+						"target": "Programmer",
+						"amount": 25 ,
+						"log": "프로그래머에게 힘내라고 응원했지만 아티스트는 더 졸려졌다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile5", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "아티스트가 자신은 잠이 많아서 더는 자야한다고 한다. 때려 죽어도 자야한다고 한다.", 
+		"choose": [
+			"야구 방망이", 
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseSleepy", 
+						"target": "Art",
+						"amount": 100
+					},
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 10
+					},
+					{
+						"log": "예로부터 말을 안들을 떄는 매가 약이었다. 마사지를 받아 잠이 깬 아티스트의 개발력이 10 상승했다.",						
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "DecreaseSleepy", 
+						"target": "Art",
+						"amount": 25 ,
+						"log": "아티스트에게 힘내라고 응원했지만 아티스트는 더 졸려졌다."
+					}
+				]
+			}
+		]
+	},
+
+	{
+		"image": "profile4", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "기획자가 시간이 많이 남았다며 게으름을 부리려고 한다.", 
+		"choose": [
+			"야구 방망이", 
+			"치킨",
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 30
+					},
+					{
+						"log": "답은 몽둥이다. 기획자의 개발력이 30 상승했다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Director",
+						"amount": 30 
+					},
+					{
+						"log": "응원이 필요한 시기이다. 기획자의 개발력이 30 상승했다."	,					
+						"amount": 1
+					}
+				]
+
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"log": "기획자는 한 껏 게으름 부린다. 개발력이 30 감소했다.",
+						"amount": 20 
+					}
+
+				]
+					
+			}
+		]
+	},
+
+	{
+		"image": "profile2", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "프로그래머가 시간이 많이 남았다며 게으름을 부리려고 한다.", 
+		"choose": [
+			"야구 방망이", 
+			"치킨",
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 30
+					},
+					{
+						"log": "답은 몽둥이다. 프로그래머의 개발력이 30 상승했다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Programmer",
+						"amount": 30 
+					},
+					{
+						"log": "응원이 필요한 시기이다. 프로그래머의 개발력이 30 상승했다.",						
+						"amount": 1
+					}
+				]
+
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"log": "프로그래머는 한 껏 게으름 부린다. 개발력이 30 감소했다.",
+						"amount": 30 
+					}
+
+				]
+					
+			}
+		]
+	},
+
+	{
+		"image": "profile1", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "아티스트가 시간이 많이 남았다며 게으름을 부리려고 한다.", 
+		"choose": [
+			"야구 방망이", 
+			"치킨",
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 30
+					},
+					{
+						"log": "답은 몽둥이다. 아티스트의 개발력이 30 상승했다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "IncreaseCondition", 
+						"target": "Art",
+						"amount": 30 
+					},
+					{
+						"log": "응원이 필요한 시기이다. 아티스트의 개발력이 30 상승했다."		,				
+						"amount": 1
+					}
+				]
+
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Art",
+						"log": "아티스트는 한 껏 게으름 부린다. 개발력이 30 감소했다.",
+						"amount": 30 
+					}
+
+				]
+					
+			}
+		]
+	},
+
+	{
+		"image": "profile7", 
+		"useItem": true, 
+		"onIndex": false, 
+		"content": "개발 도중 다른 팀 기획자 양명진이 난입해 들어와 수다를 떤다. 어떻게 할까?", 
+		"choose": [
+			"야구 방망이", 
+			"치킨",
+			"줄 수 있는 것은 없다."
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "AddFood", 
+						"amount": 1
+					},
+					{
+						"log": "정의를 구현했다. 도망치는 양명진은 컵라면을 드랍했다.",						
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "AddHotsix", 
+						"amount": 30 
+					},
+					{
+						"log": "조공을 바쳐 평화를 이룩했다. 양명진은 평화의 선물로 핫식스를 줬다."	,					
+						"amount": 1
+					}
+				]
+
+			},
+			{
+					"action": [
+					{
+						"method": "DescreaseCondition", 
+						"target": "Director",
+						"amount": 10 
+					},
+					{
+						"method": "DescreaseCondition", 
+						"target": "Programmer",
+						"amount": 10 
+					},
+					{
+						"method": "DescreaseCondition", 
+						"target": "Art",
+						"log": "수다 떠는 개발자들을 막을 방법은 없었다.모든 개발자의 개발력이 하락한다.",
+						"amount": 10 
+					}
+
+				]
+					
+			}
+		]
+	},
+
+	{
+		"image": "profile6", 
+		"useItem": true, 
+		"onIndex": false, 
+		"acceptTurn": [3,6,9], 
+		"content": "레고 캐빈의 보급차가 도착했다. 어떤 아이템을 달라고 할까?", 
+		"choose": [
+			"랜덤유니크아이템", 
+			"랜덤유니크아이템",
+			"랜덤유니크아이템"
+		],
+		"results": [
+			{
+					"action": [
+					{
+						"method": "Random", 
+						"log": "레고 캐빈님은 도라에몽에 견줄만 하다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Random", 
+						"log": "레고 캐빈님은 도라에몽에 견줄만 하다."	,					
+						"amount": 1
+					}
+
+				]
+			},
+			{
+					"action": [
+					{
+						"method": "Random", 
+						"log": "레고 캐빈님은 도라에몽에 견줄만 하다."	,					
+						"amount": 1
+					}
+
+				]
+			}
+		]
+	}
+]

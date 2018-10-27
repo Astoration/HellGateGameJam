@@ -159,6 +159,7 @@ MonoBehaviour:
   delegates: []
   title: "\uC2A4\uCF00\uC904 \uAD00\uB9AC"
   description: "\uC2A4\uCF00\uC904\uC744 \uAD00\uB9AC\uD569\uB2C8\uB2E4"
+  useBack: 0
 --- !u!61 &91655747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -434,6 +435,7 @@ MonoBehaviour:
   delegates: []
   title: 
   description: 
+  useBack: 1
 --- !u!114 &201875488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +716,7 @@ MonoBehaviour:
   delegates: []
   title: 
   description: 
+  useBack: 1
 --- !u!114 &430175517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,6 +1102,7 @@ MonoBehaviour:
   delegates: []
   title: 
   description: 
+  useBack: 1
 --- !u!114 &931610193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,6 +1449,7 @@ MonoBehaviour:
   title: "\uB728\uAC70\uC6B4 6"
   description: "\uB108\uBB34 \uB728\uAC70\uC6B4 \uB098\uBA38\uC9C0 6\uC2DC\uAC04\uB3D9\uC548
     \uC790\uC9C0 \uBABB\uD55C\uB2E4"
+  useBack: 0
 --- !u!61 &1190193923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1584,6 +1589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turn: 1
+  eventList: []
+  eventJson: {fileID: 4900000, guid: 3c9bd788565694ded876af95e602a0ec, type: 3}
 --- !u!4 &1328547721
 Transform:
   m_ObjectHideFlags: 0
@@ -1694,6 +1701,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1708717388083262, guid: 22286004aafa84f9f8a9b0df921dcae3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22286004aafa84f9f8a9b0df921dcae3, type: 2}
   m_IsPrefabAsset: 0
@@ -1744,6 +1755,7 @@ MonoBehaviour:
   delegates: []
   title: 
   description: 
+  useBack: 1
 --- !u!114 &1452719063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1874,6 +1886,7 @@ MonoBehaviour:
   delegates: []
   title: 
   description: 
+  useBack: 1
 --- !u!114 &1491962377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2128,6 +2141,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094719141779018, guid: a0347324955f84b4b892ca8330fa972c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0347324955f84b4b892ca8330fa972c, type: 2}

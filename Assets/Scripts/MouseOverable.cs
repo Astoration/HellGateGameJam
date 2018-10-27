@@ -8,11 +8,14 @@ public class MouseOverable : EventTrigger
 {
     public string title;
     public string description;
+    public bool useBack = false;
     private GameObject popup;
 
     private void OnMouseEnter()
     {
         popup = OverPopup.Instantiate(title, description, Input.mousePosition);
+        if(useBack)
+            popup.transform.SetSiblingIndex(0);
     }
 
     private void OnMouseExit()
@@ -44,7 +47,7 @@ public class MouseOverableEditor : Editor
         MouseOverable component = target as MouseOverable;
         component.title = EditorGUILayout.TextField("title", component.title);
         component.description = EditorGUILayout.TextField("description", component.description);
-
+        component.useBack = EditorGUILayout.Toggle("useBack", component.useBack);
     }
 }
 #endif
