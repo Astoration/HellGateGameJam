@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEditor;
+using UnityEngine.SceneManagement;
+
 public delegate void DelegateOnSelect(ItemInfo info);
 
 public class SelectScene : Singleton<SelectScene> {
@@ -11,6 +13,7 @@ public class SelectScene : Singleton<SelectScene> {
  //   public UnityEvent onClick;
     private List<ItemInfo> m_listItem       = new List<ItemInfo>();
 
+    public Image        m_imgBlack;
     public CardObject[] m_objCard;
     public float        m_fFadeTime         = 0.0f;         // 화면 페이드 타임
     public float        m_fSelectTimeLimit    = 0.0f;       // 카트 뽑기 제한시간
@@ -19,7 +22,7 @@ public class SelectScene : Singleton<SelectScene> {
     public int          m_nNowCardCount     = 0;            // 현재 가져온 카드 수
    
     void Start () {
-        StartCoroutine(GameUtility.Instance.FadeIn(2.0f));
+        StartCoroutine(FadeIn(m_fFadeTime));
 
         m_listItem = Gamedata.m_listItem;
         InitCards();
@@ -95,5 +98,52 @@ public class SelectScene : Singleton<SelectScene> {
 
         InitCards();
     }
+    public IEnumerator FadeIn(float fadeTime)
+    {
+        Color color = m_imgBlack.color;
+        float fTime = 1.0f;
 
+        color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+        m_imgBlack.gameObject.SetActive(true);
+
+        while (0.0f < color.a)
+        {
+            fTime -= Time.deltaTime / fadeTime;
+
+            color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+            m_imgBlack.color = color;
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeOut(float fadeTime)
+    {
+        Color color = m_imgBlack.color;
+        float fTime = 0.0f;
+
+        color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+        m_imgBlack.gameObject.SetActive(true);
+
+        while (color.a < 1.0f)
+        {
+
+            fTime += Time.deltaTime / fadeTime;
+
+            color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+            m_imgBlack.color = color;
+
+            yield return null;
+        }
+
+        // SceneManager.LoadScene(0);
+    }
+    public IEnumerator ChangeScene(string strScene)
+    {
+        StartCoroutine(FadeOut(2.0f));
+
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene(strScene);
+    }
 }

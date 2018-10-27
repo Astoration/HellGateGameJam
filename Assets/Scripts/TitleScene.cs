@@ -1,29 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour {
 
+    public Image m_imgBlack;
     private bool m_bEnableInput = false;
     private const float m_fWaitTime = 3.0f;
 
     private void Start()
     {
-        StartCoroutine(GameUtility.Instance.FadeIn(m_fWaitTime));
+        StartCoroutine(FadeIn(m_fWaitTime));
         StartCoroutine(StartWating());
-    }
-
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            StartCoroutine(GameUtility.Instance.FadeOut(2.0f));
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            StartCoroutine(GameUtility.Instance.FadeIn(2.0f));
-        }
     }
 
     private IEnumerator StartWating()
@@ -36,6 +26,54 @@ public class TitleScene : MonoBehaviour {
     public void OnClick()
     {
         if(m_bEnableInput)
-            StartCoroutine(GameUtility.Instance.ChangeScene("IntroScene"));
+            StartCoroutine(ChangeScene("IntroScene"));
+    }
+
+    public IEnumerator FadeIn(float fadeTime)
+    {
+        Color color = m_imgBlack.color;
+        float fTime = 1.0f;
+
+        color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+        m_imgBlack.gameObject.SetActive(true);
+
+        while (0.0f < color.a)
+        {
+            fTime -= Time.deltaTime / fadeTime;
+
+            color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+            m_imgBlack.color = color;
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeOut(float fadeTime)
+    {
+        Color color = m_imgBlack.color;
+        float fTime = 0.0f;
+
+        color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+        m_imgBlack.gameObject.SetActive(true);
+
+        while (color.a < 1.0f)
+        {
+
+            fTime += Time.deltaTime / fadeTime;
+
+            color.a = Mathf.Lerp(0.0f, 1.0f, fTime);
+            m_imgBlack.color = color;
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator ChangeScene(string strScene)
+    {
+        StartCoroutine(FadeOut(2.0f));
+
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene(strScene);
     }
 }
