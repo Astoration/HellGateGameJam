@@ -19,7 +19,7 @@ public class PopupEvent : MonoBehaviour {
 
     private void Awake()
     {
-        m_canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        m_canvas = FindObjectOfType<Canvas>();
 
         // 내용 불러와야함
         m_textContent.text = "개발자가 뭐어떡했냐에 따라 상태를 표시해줄건데";
