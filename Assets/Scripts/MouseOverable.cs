@@ -19,8 +19,7 @@ public class MouseOverable : EventTrigger
     {
         Destroy(popup);
     }
-
-
+  
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
