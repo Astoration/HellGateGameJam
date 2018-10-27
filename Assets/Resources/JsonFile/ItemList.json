@@ -1,0 +1,72 @@
+[
+ {
+   "Name": "핫식스",
+   "Image": "Hot6",
+   "unique item": 0,
+   "Description": "힐링 포션. 잠을 잘 수 없는 당신을 위해",
+   "효과": "스캐쥴에서 핫식스를 선택할 수 있음"
+ },
+ {
+   "Name": "컵라면",
+   "Image": "CupNuddle",
+   "unique item": 0,
+   "Description": "먹고 살기 위해 필요한 것",
+   "효과": "스캐쥴에서 식사를 선택할 수 있음"
+ },
+ {
+   "Name": "야구 방망이",
+   "Image": "Bat",
+   "unique item": 0,
+   "Description": "옛부터 내려오던 약",
+   "효과": "아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "치킨",
+   "Image": "Chicken",
+   "unique item": 0,
+   "Description": "말이 필요한가 ? ",
+   "효과": "아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "담배",
+   "Image": "Cigarette",
+   "unique item": 1,
+   "Description": "골초를 위한 필수 아이템",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "사촌 누나의 연락처",
+   "Image": "Contact",
+   "unique item": 1,
+   "Description": "참고로 사촌 누나는 매우 예쁘다",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "무선 키보드",
+   "Image": "Keyboard",
+   "unique item": 1,
+   "Description": "노트북 키보드가 불편하다면 바로 이것이 해결책",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "타블렛 펜심",
+   "Image": "Pen",
+   "unique item": 1,
+   "Description": "이게 없으면 타블렛을 쓸 수 없다",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "위장약",
+   "Image": "Drug",
+   "unique item": 1,
+   "Description": "위장이 약한 사람을 위한 솔루션",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
+ },
+ {
+   "Name": "토끼 머리띠",
+   "Image": "HairBand",
+   "unique item": 1,
+   "Description": "소화할 수 있는 사람이 극히 드물다",
+   "효과": "1회성 아이템 소모 이벤트에서 사용 가능"
+ }
+]

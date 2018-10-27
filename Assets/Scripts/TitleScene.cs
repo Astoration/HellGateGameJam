@@ -4,28 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameUtility : Singleton<GameUtility> {
+public class TitleScene : MonoBehaviour {
 
-    public Image    m_imgBlack;
-    /*
+    public Image m_imgBlack;
+    private bool m_bEnableInput = false;
+    private const float m_fWaitTime = 3.0f;
 
-    private void Awake()
+    private void Start()
     {
-        DontDestroyOnLoad(this);
+        StartCoroutine(FadeIn(m_fWaitTime));
+        StartCoroutine(StartWating());
     }
 
-    public static IEnumerator Timer(float fSetTime, System.Action del = null)
+    private IEnumerator StartWating()
     {
-        float time = 0.0f;
+        yield return new WaitForSeconds(m_fWaitTime);
 
-        while(time < fSetTime)
-        {
-            time += Time.deltaTime;
+        m_bEnableInput = true;
+    }
 
-            yield return null;
-        }
-
-        del();
+    public void OnClick()
+    {
+        if(m_bEnableInput)
+            StartCoroutine(ChangeScene("IntroScene"));
     }
 
     public IEnumerator FadeIn(float fadeTime)
@@ -65,17 +66,14 @@ public class GameUtility : Singleton<GameUtility> {
 
             yield return null;
         }
-
-        // SceneManager.LoadScene(0);
     }
 
     public IEnumerator ChangeScene(string strScene)
     {
         StartCoroutine(FadeOut(2.0f));
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
 
         SceneManager.LoadScene(strScene);
     }
-    */
 }

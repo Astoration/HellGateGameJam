@@ -1,22 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class CardObject : MonoBehaviour {
 
-    public Gamedata.GameItem m_typeItem;
+    public DelegateOnSelect m_delOnSelect;
+    public ItemInfo m_Iteminfo;
+    public Image m_imgItem;
+    public Text m_textTitle;
+    public Text m_textDesc;
 
+    private bool m_bIsClick = false;
 
-    public void Init(Gamedata.GameItem type)
+    public void Init(ItemInfo info, DelegateOnSelect del)
     {
-        m_typeItem = type;
+        m_bIsClick = false;
+        m_Iteminfo = info;
+        m_delOnSelect = del;
 
+        if (Gamedata.m_dicItem[info.Name] == null)
+        {
+            Debug.LogError("<color=red> Resource Loading Error!! - ItemSlot:Gamedata.m_dicItem </color>");
+        }
+        else
+        {
+            m_imgItem.sprite = Gamedata.m_dicItem[info.Name];
+        }
+        m_textTitle.text = info.Name;
+        m_textDesc.text = info.Description;
     }
 
     public void OnSelect()
     {
-        // 인벤토리에 해당 아이템 추가
-        Gamedata.m_listInventory.Add(m_typeItem);
+        if (m_bIsClick == false)
+        {
+            m_bIsClick = true;
+            m_delOnSelect(m_Iteminfo);
+        }
     }
 }
