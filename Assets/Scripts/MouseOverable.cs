@@ -44,6 +44,7 @@ public class MouseOverableEditor : Editor
         MouseOverable component = target as MouseOverable;
         component.title = EditorGUILayout.TextField("title", component.title);
         component.description = EditorGUILayout.TextField("description", component.description);
+
     }
 }
 #endif
