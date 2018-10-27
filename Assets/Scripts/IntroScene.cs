@@ -58,6 +58,8 @@ public class IntroScene : MonoBehaviour {
 
             yield return null;
         }
+
+        m_imgBlack.gameObject.SetActive(false);
     }
 
     public IEnumerator FadeOut(float fadeTime)

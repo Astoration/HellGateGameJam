@@ -45,6 +45,93 @@ public class PopupSchedule : MonoBehaviour {
     {
         // 각 행동에 다른 처리 필요
         Debug.Log(part + ",    " + act);
+
+        switch(part) {
+            case PopupSchedulePart.DevelopmentPart.eProgrammer:
+                switch(act) {
+                    case PopupSchedulePart.Act.eWork:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eHot6:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eRamen:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eSleep:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eSearch:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eGame:
+
+                        break;
+                }
+                break;
+            case PopupSchedulePart.DevelopmentPart.eDirector:
+                switch (act)
+                {
+                    case PopupSchedulePart.Act.eWork:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eHot6:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eRamen:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eSleep:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eSearch:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eGame:
+
+                        break;
+                }
+                break;
+            case PopupSchedulePart.DevelopmentPart.eArt:
+                switch (act)
+                {
+                    case PopupSchedulePart.Act.eWork:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eHot6:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eRamen:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eSleep:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eSearch:
+
+                        break;
+
+                    case PopupSchedulePart.Act.eGame:
+
+                        break;
+                }
+                break;
+        }
+
     }
 
     public void OnConfirm()

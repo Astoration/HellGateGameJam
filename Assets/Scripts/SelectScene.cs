@@ -151,6 +151,8 @@ public class SelectScene : Singleton<SelectScene> {
 
             yield return null;
         }
+
+        m_imgBlack.gameObject.SetActive(false);
     }
 
     public IEnumerator FadeOut(float fadeTime)
