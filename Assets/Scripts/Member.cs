@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
+using System;
+
+[Serializable]
+public enum PositionType{
+    [StringValue("기획자")]
+    Director,
+    [StringValue("프로그래머")]
+    Programmer,
+    [StringValue("아트")]
+    Art,
+}
 
 public class Member{
     private float hunger = 100;

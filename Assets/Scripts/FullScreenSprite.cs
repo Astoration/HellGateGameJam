@@ -33,7 +33,7 @@ public class FullScreenSprite : MonoBehaviour
         float screenWidth = screenHeight * camera.aspect;
         var widthRatio = (screenWidth / spriteWidth);
         var heightRaito = screenHeight / spriteHeight;
-        var ratio = widthRatio<heightRaito ? heightRaito : widthRatio;
+        var ratio = widthRatio>heightRaito ? heightRaito : widthRatio;
         transform.localScale = new Vector3(ratio,ratio, 1f);
     }
 }
