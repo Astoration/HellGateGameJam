@@ -30,9 +30,17 @@ public class PopupSchedulePart : MonoBehaviour {
     public Image            m_imgSelect;
     public System.Action<DevelopmentPart, Act> m_delSelect;
 
+    public static int hotsixCount = 0;
+    public static int foodCount = 0;
+
+    public bool preHotsix = false;
+    public bool preFood = false;
+
     public void Init(System.Action<DevelopmentPart, Act> del)
     {
         m_delSelect = del;
+        foodCount = 0;
+        hotsixCount = 0;
 
     }
 
@@ -47,11 +55,29 @@ public class PopupSchedulePart : MonoBehaviour {
     {
         m_selectAct = Act.eWork;
         SelectIcon(m_selectAct);
+        if (preFood)
+        {
+            preFood = false;
+            foodCount -= 1;
+        }
+        if (preHotsix)
+        {
+            preHotsix = false;
+            hotsixCount -= 1;
+        }
         m_delSelect(m_typePart, m_selectAct);
     }
 
     public void OnHot6()
     {
+        if (HasItem("핫식스") <= hotsixCount) return;
+        if(!preHotsix)
+            hotsixCount += 1;
+        preHotsix = true;
+        if(preFood){
+            preFood = false;
+            foodCount -= 1;
+        }
         m_selectAct = Act.eHot6;
         SelectIcon(m_selectAct);
         m_delSelect(m_typePart, m_selectAct);
@@ -59,6 +85,15 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnRamen()
     {
+        if (HasItem("컵라면") <= foodCount) return;
+        if (!preFood)
+            foodCount += 1;
+        preFood = true;
+        if (preHotsix)
+        {
+            preHotsix = false;
+            hotsixCount -= 1;
+        }
         m_selectAct = Act.eRamen;
         SelectIcon(m_selectAct);
         m_delSelect(m_typePart, m_selectAct);
@@ -68,6 +103,16 @@ public class PopupSchedulePart : MonoBehaviour {
     {
         m_selectAct = Act.eSleep;
         SelectIcon(m_selectAct);
+        if (preFood)
+        {
+            preFood = false;
+            foodCount -= 1;
+        }
+        if (preHotsix)
+        {
+            preHotsix = false;
+            hotsixCount -= 1;
+        }
         m_delSelect(m_typePart, m_selectAct);
     }
 
@@ -75,6 +120,16 @@ public class PopupSchedulePart : MonoBehaviour {
     {
         m_selectAct = Act.eSearch;
         SelectIcon(m_selectAct);
+        if (preFood)
+        {
+            preFood = false;
+            foodCount -= 1;
+        }
+        if (preHotsix)
+        {
+            preHotsix = false;
+            hotsixCount -= 1;
+        }
         m_delSelect(m_typePart, m_selectAct);
     }
 
@@ -82,6 +137,30 @@ public class PopupSchedulePart : MonoBehaviour {
     {
         m_selectAct = Act.eGame;
         SelectIcon(m_selectAct);
+        if (preFood)
+        {
+            preFood = false;
+            foodCount -= 1;
+        }
+        if (preHotsix)
+        {
+            preHotsix = false;
+            hotsixCount -= 1;
+        }
         m_delSelect(m_typePart, m_selectAct);
+    }
+
+    public int HasItem(string name)
+    {
+        int count = 0;
+        for (var i = 0; i < Gamedata.m_listInventory.Count; i++)
+        {
+            var item = Gamedata.m_listInventory[i];
+            if (item.Name == name)
+            {
+                count += 1;
+            }
+        }
+        return count;
     }
 }

@@ -53,7 +53,7 @@ public class Gamedata : Singleton<Gamedata> {
         Sprite[] sprites = Resources.LoadAll<Sprite>("Item/Item");
 
         foreach (Sprite sprite in sprites){
-
+            if (m_dicItem.ContainsKey(sprite.name)) continue;
             if(sprite.name == "Item_0")
                 m_dicItem.Add("핫식스", sprite);
 

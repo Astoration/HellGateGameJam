@@ -83,20 +83,109 @@ public class PopupSchedule : MonoBehaviour {
             case PopupSchedulePart.Act.eWork:
                 if(part == PopupSchedulePart.DevelopmentPart.eProgrammer){
                     ProcessManager.Instance.programmerProgress += MemberManager.Instance.members[PositionType.Programmer].Condition;
-                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+                    return MemberManager.Instance.members[PositionType.Programmer].Update(true);
 
                 }
                 else if(part == PopupSchedulePart.DevelopmentPart.eArt){
                     ProcessManager.Instance.artProgress += MemberManager.Instance.members[PositionType.Art].Condition;
-                    return MemberManager.Instance.members[PositionType.Art].Update();
+                    return MemberManager.Instance.members[PositionType.Art].Update(true);
                 }
                 else
                 {
                     ProcessManager.Instance.directorProgress += MemberManager.Instance.members[PositionType.Director].Condition;
-                    var condition = MemberManager.Instance.members[PositionType.Director].Condition;
+                    return MemberManager.Instance.members[PositionType.Director].Update(true);
+                }
+            case PopupSchedulePart.Act.eHot6:
+                if (part == PopupSchedulePart.DevelopmentPart.eProgrammer)
+                {
+                    UseItem("핫식스");
+                    MemberManager.Instance.members[PositionType.Programmer].Sleepy += 100;
+                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+
+                }
+                else if (part == PopupSchedulePart.DevelopmentPart.eArt)
+                {
+                    UseItem("핫식스");
+                    MemberManager.Instance.members[PositionType.Art].Sleepy += 100;
+                    return MemberManager.Instance.members[PositionType.Art].Update();
+                }
+                else
+                {
+                    UseItem("핫식스");
+                    MemberManager.Instance.members[PositionType.Director].Sleepy += 100;
                     return MemberManager.Instance.members[PositionType.Director].Update();
                 }
-                break;
+            case PopupSchedulePart.Act.eRamen:
+                if (part == PopupSchedulePart.DevelopmentPart.eProgrammer)
+                {
+                    UseItem("컵라면");
+                    MemberManager.Instance.members[PositionType.Programmer].Hunger += 100;
+                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+
+                }
+                else if (part == PopupSchedulePart.DevelopmentPart.eArt)
+                {
+                    UseItem("컵라면");
+                    MemberManager.Instance.members[PositionType.Art].Hunger += 100;
+                    return MemberManager.Instance.members[PositionType.Art].Update();
+                }
+                else
+                {
+                    UseItem("컵라면");
+                    MemberManager.Instance.members[PositionType.Director].Hunger += 100;
+                    return MemberManager.Instance.members[PositionType.Director].Update();
+                }
+            case PopupSchedulePart.Act.eSleep:
+                if (part == PopupSchedulePart.DevelopmentPart.eProgrammer)
+                {
+                    MemberManager.Instance.members[PositionType.Programmer].sleepTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+
+                }
+                else if (part == PopupSchedulePart.DevelopmentPart.eArt)
+                {
+                    MemberManager.Instance.members[PositionType.Art].sleepTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Art].Update();
+                }
+                else
+                {
+                    MemberManager.Instance.members[PositionType.Director].sleepTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Director].Update();
+                }
+            case PopupSchedulePart.Act.eSearch:
+                if (part == PopupSchedulePart.DevelopmentPart.eProgrammer)
+                {
+                    MemberManager.Instance.members[PositionType.Programmer].adventureTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+
+                }
+                else if (part == PopupSchedulePart.DevelopmentPart.eArt)
+                {
+                    MemberManager.Instance.members[PositionType.Art].adventureTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Art].Update();
+                }
+                else
+                {
+                    MemberManager.Instance.members[PositionType.Director].adventureTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Director].Update();
+                }
+            case PopupSchedulePart.Act.eGame:
+                if (part == PopupSchedulePart.DevelopmentPart.eProgrammer)
+                {
+                    MemberManager.Instance.members[PositionType.Programmer].playTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+
+                }
+                else if (part == PopupSchedulePart.DevelopmentPart.eArt)
+                {
+                    MemberManager.Instance.members[PositionType.Art].playTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Art].Update();
+                }
+                else
+                {
+                    MemberManager.Instance.members[PositionType.Director].playTurn = 2;
+                    return MemberManager.Instance.members[PositionType.Director].Update();
+                }
         }
         return "";
     }
@@ -106,5 +195,17 @@ public class PopupSchedule : MonoBehaviour {
         ProcessManager.Instance.InvokeEvent();
         Destroy(gameObject);
     }
-   
+
+    public void UseItem(string name)
+    {
+        for (var i = 0; i < Gamedata.m_listInventory.Count; i++)
+        {
+            var item = Gamedata.m_listInventory[i];
+            if (item.Name == name)
+            {
+                Gamedata.m_listInventory.Remove(item);
+                break;
+            }
+        }
+    }
 }

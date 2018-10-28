@@ -110,4 +110,49 @@ public class EventPopup : MonoBehaviour{
             }
         }
     }
+
+    public void AddFood(){
+        foreach(var item in Gamedata.m_listItem){
+            if(item.Name == "컵라면"){
+                Gamedata.m_listInventory.Add(item);
+                return;
+            } 
+        }
+    }
+
+    public void AddHotsix()
+    {
+        foreach (var item in Gamedata.m_listItem)
+        {
+            if (item.Name == "컵라면")
+            {
+                Gamedata.m_listInventory.Add(item);
+                return;
+            }
+        }
+    }
+
+    public void DescreaseConditionDirector(int amount){
+        MemberManager.Instance.members[PositionType.Director].Condition -= amount;
+    }
+    public void DescreaseConditionProgrammer(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Programmer].Condition -= amount;
+    }
+    public void DescreaseConditionArt(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Art].Condition -= amount;
+    }
+    public void IncreaseConditionDirector(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Director].Condition += amount;
+    }
+    public void IncreaseConditionProgrammer(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Programmer].Condition += amount;
+    }
+    public void IncreaseConditionArt(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Art].Condition += amount;
+    }
 }
