@@ -31,7 +31,7 @@ public class EndingScene : MonoBehaviour {
 
 원하는 걸 구현하기에 턱없이 부족한 시간과 예측하지 못한 변수 앞에 완성은 신기루처럼 사라져버렸다.";
 
-    private string success = @"  분명 헬게이트의 문은 열렸다.거듭된 이견과 오해가 있었고, 잠도 제대로 잘 수 없었지만 그들은 게임을 완성시켰다.
+    private string success = @"  분명 헬게이트의 문은 열렸다. 거듭된 이견과 오해가 있었고, 잠도 제대로 잘 수 없었지만 그들은 게임을 완성시켰다.
 최고의 게임은 아니다. 전에 없던 새로운 게임도 아니다.
 평범한 하지만 그래서 더 의미가 있는 게임이었다.
 
@@ -45,10 +45,16 @@ public class EndingScene : MonoBehaviour {
     public float m_fLineTime;
     public float speed = 1.0f;
 
+    public Image m_imgEnding;
+    public Sprite[] m_arrEnding;
+
     void Start()
     {
-        Init((EndingType)PlayerPrefs.GetInt("endingType"));
         
+        int type = PlayerPrefs.GetInt("endingType");
+        Init((EndingType)type);
+        m_imgEnding.sprite = m_arrEnding[type];
+
         StartCoroutine(FadeIn(m_fWaitTime));
         StartCoroutine(TypingAnimation());
     }
@@ -63,28 +69,59 @@ public class EndingScene : MonoBehaviour {
         else if (Input.GetMouseButtonUp(0))
         {
             speed = 1.0f;
-
         }
+
+        /*
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Init(EndingType.eSuccess);
+            int type = 0;
+            Init((EndingType)type);
+            m_imgEnding.sprite = m_arrEnding[type];
+
             StartCoroutine(FadeIn(m_fWaitTime));
             StartCoroutine(TypingAnimation());
         }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Init(EndingType.eBadAll);
+            int type = 1;
+            Init((EndingType)type);
+            m_imgEnding.sprite = m_arrEnding[type];
+
             StartCoroutine(FadeIn(m_fWaitTime));
             StartCoroutine(TypingAnimation());
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Init(EndingType.eBadArtist);
+            int type = 2;
+            Init((EndingType)type);
+            m_imgEnding.sprite = m_arrEnding[type];
+
             StartCoroutine(FadeIn(m_fWaitTime));
             StartCoroutine(TypingAnimation());
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            int type = 3;
+            Init((EndingType)type);
+            m_imgEnding.sprite = m_arrEnding[type];
+
+            StartCoroutine(FadeIn(m_fWaitTime));
+            StartCoroutine(TypingAnimation());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            int type = 4;
+            Init((EndingType)type);
+            m_imgEnding.sprite = m_arrEnding[type];
+
+            StartCoroutine(FadeIn(m_fWaitTime));
+            StartCoroutine(TypingAnimation());
+        }
+        */
     }
 
     void Init(EndingType type)

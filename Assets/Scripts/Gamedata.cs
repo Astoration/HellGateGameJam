@@ -48,6 +48,14 @@ public class Gamedata : Singleton<Gamedata> {
         LoadResource();
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     private void LoadItems()
     {
         Sprite[] sprites = Resources.LoadAll<Sprite>("Item/Item");
