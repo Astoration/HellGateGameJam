@@ -16,7 +16,8 @@ public class LevelSelectScene : MonoBehaviour {
 
     public void SelectLevel1()
     {
-        ProcessManager.Instance.difficult = 700;
+        PlayerPrefs.SetInt("difficult", 900);
+        PlayerPrefs.Save();
         m_textTitle.text = "쉬엄쉬엄 하다 가자구";
 
         StartCoroutine(FadeOut(2.0f, 1.0f));
@@ -24,7 +25,8 @@ public class LevelSelectScene : MonoBehaviour {
 
     public void SelectLevel2()
     {
-        ProcessManager.Instance.difficult = 1100;
+        PlayerPrefs.SetInt("difficult", 1100);
+        PlayerPrefs.Save();
         m_textTitle.text = "역시 세상은 중간이야.";
 
         StartCoroutine(FadeOut(2.0f, 1.0f));
@@ -32,7 +34,8 @@ public class LevelSelectScene : MonoBehaviour {
 
     public void SelectLevel3()
     {
-        ProcessManager.Instance.difficult = 1500;
+        PlayerPrefs.SetInt("difficult", 1500);
+        PlayerPrefs.Save();
         m_textTitle.text = "헬게이트가 열린다. 가즈아아아아!!!";
 
         StartCoroutine(FadeOut(2.0f, 1.0f));

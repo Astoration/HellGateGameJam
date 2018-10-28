@@ -17,6 +17,7 @@ public class ProcessManager : Singleton<ProcessManager> {
 
 	// Use this for initialization
     void Start () {
+        difficult = PlayerPrefs.GetInt("difficult", 1100);
         eventList = JsonMapper.ToObject<List<EventData>>(eventJson.text);
         InvokeEvent();
 	}
