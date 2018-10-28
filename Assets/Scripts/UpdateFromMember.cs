@@ -30,10 +30,35 @@ public class UpdateFromMember : MonoBehaviour {
     {
         const string newLine = "\n";
         string result = "";
-        if (false)
+        if (0<member.sleepTurn)
         {
-            result += newLine;
+            result += "수면" + newLine;
         }
+        if (0 < member.playTurn)
+        {
+            result += "일 안하고 쳐 노는중" + newLine;
+        }
+        if (0 < member.adventureTurn)
+        {
+            result += "보급을 핑계로 탈주중" + newLine;
+        }
+        if (0 < member.debuf3)
+        {
+            result += "멘탈붕괴" + newLine;
+        }
+        if (0 < member.debuf4)
+        {
+            result += "부상" + newLine;
+        }
+        if (member.Sleepy <= 0)
+        {
+            result += "멘탈붕괴" + newLine;
+        }
+        if (member.Hunger <= 0)
+        {
+            result += "굶주림" + newLine;
+        }
+        if (0 < result.Length) result = newLine + result;
         return result;
     }
 
