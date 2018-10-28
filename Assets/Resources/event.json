@@ -1127,50 +1127,5 @@
 					
 			}
 		]
-	},
-
-	{
-		"image": "profile6", 
-		"useItem": true, 
-		"onIndex": false, 
-		"acceptTurn": [3,6,9], 
-		"content": "레고 캐빈의 보급차가 도착했다. 어떤 아이템을 달라고 할까?", 
-		"choose": [
-			"랜덤유니크아이템", 
-			"랜덤유니크아이템",
-			"랜덤유니크아이템"
-		],
-		"results": [
-			{
-					"action": [
-					{
-						"method": "Random", 
-						"log": "레고 캐빈님은 도라에몽에 견줄만 하다."	,					
-						"amount": 1
-					}
-
-				]
-			},
-			{
-					"action": [
-					{
-						"method": "Random", 
-						"log": "레고 캐빈님은 도라에몽에 견줄만 하다."	,					
-						"amount": 1
-					}
-
-				]
-			},
-			{
-					"action": [
-					{
-						"method": "Random", 
-						"log": "레고 캐빈님은 도라에몽에 견줄만 하다."	,					
-						"amount": 1
-					}
-
-				]
-			}
-		]
 	}
 ]
