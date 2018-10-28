@@ -32,9 +32,9 @@ public class EventPopup : MonoBehaviour{
                 var result = data.results[index];
                 item.GetComponentInChildren<Text>().text = data.choose[index];
                 item.GetComponent<Button>().onClick.RemoveAllListeners();
+                string itemName = data.choose[index];
                 if (data.useItem)
                 {
-                    string itemName = data.choose[index];
                     bool hasItem = false;
                     foreach(var inventory in Gamedata.m_listInventory){
                         if(itemName == inventory.Name){
@@ -51,7 +51,7 @@ public class EventPopup : MonoBehaviour{
                 item.GetComponent<Image>().color = Color.white;
                 item.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    ShowResult(result,data,data.choose[index]);
+                    ShowResult(result,data,itemName);
                 });
             }else{
                 item.SetActive(false);
