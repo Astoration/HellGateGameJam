@@ -51,7 +51,7 @@ public class Gamedata : Singleton<Gamedata> {
     private void LoadItems()
     {
         Sprite[] sprites = Resources.LoadAll<Sprite>("Item/Item");
-
+        if (0 < m_dicItem.Count) return;
         foreach (Sprite sprite in sprites){
             if (m_dicItem.ContainsKey(sprite.name)) continue;
             if(sprite.name == "Item_0")

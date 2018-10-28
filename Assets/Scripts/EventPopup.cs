@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EventPopup : MonoBehaviour{
+public class EventPopup : MonoBehaviour
+{
     public Image image;
     public Text content;
     public GameObject[] chooses;
 
     public static EventPopup instance;
-    
-	// Use this for initialization
-	void Awake () {
+
+    // Use this for initialization
+    void Awake()
+    {
         instance = this;
         gameObject.SetActive(false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
-    public void Init(EventData data){
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void Init(EventData data)
+    {
         gameObject.SetActive(true);
         image.sprite = Resources.Load<Sprite>("profiles/" + data.image);
         content.text = data.content;
         int index = 0;
-        foreach(var item in chooses){
-            if(index<data.choose.Count){
+        foreach (var item in chooses)
+        {
+            if (index < data.choose.Count)
+            {
                 item.SetActive(true);
                 var result = data.results[index];
                 item.GetComponentInChildren<Text>().text = data.choose[index];
@@ -36,12 +42,14 @@ public class EventPopup : MonoBehaviour{
                 if (data.useItem)
                 {
                     bool hasItem = false;
-                    foreach(var inventory in Gamedata.m_listInventory){
-                        if(itemName == inventory.Name){
+                    foreach (var inventory in Gamedata.m_listInventory)
+                    {
+                        if (itemName == inventory.Name)
+                        {
                             hasItem = true;
                         }
                     }
-                    if (!hasItem&&index!=data.results.Count-1)
+                    if (!hasItem && index != data.results.Count - 1)
                     {
                         item.GetComponent<Image>().color = Color.gray;
                         index += 1;
@@ -51,9 +59,11 @@ public class EventPopup : MonoBehaviour{
                 item.GetComponent<Image>().color = Color.white;
                 item.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    ShowResult(result,data,itemName);
+                    ShowResult(result, data, itemName);
                 });
-            }else{
+            }
+            else
+            {
                 item.SetActive(false);
             }
             index += 1;
@@ -61,13 +71,14 @@ public class EventPopup : MonoBehaviour{
 
     }
 
-    public void ShowResult(ResultInfo result,EventData data,string name){
+    public void ShowResult(ResultInfo result, EventData data, string name)
+    {
         var resultString = "";
         foreach (var action in result.action)
         {
             if (action.method != null)
             {
-                gameObject.SendMessage(action.method + action.target, action.amount,SendMessageOptions.DontRequireReceiver);
+                gameObject.SendMessage(action.method + action.target, action.amount, SendMessageOptions.DontRequireReceiver);
             }
             if (action.log != null)
             {
@@ -76,7 +87,8 @@ public class EventPopup : MonoBehaviour{
             }
         }
         content.text = resultString;
-        if(data.useItem){
+        if (data.useItem)
+        {
             UseItem(name);
         }
         int index = 0;
@@ -101,22 +113,28 @@ public class EventPopup : MonoBehaviour{
         }
     }
 
-    public void UseItem(string name){
-        for (var i = 0; i < Gamedata.m_listInventory.Count;i++){
+    public void UseItem(string name)
+    {
+        for (var i = 0; i < Gamedata.m_listInventory.Count; i++)
+        {
             var item = Gamedata.m_listInventory[i];
-            if(item.Name == name){
+            if (item.Name == name)
+            {
                 Gamedata.m_listInventory.Remove(item);
                 break;
             }
         }
     }
 
-    public void AddFood(){
-        foreach(var item in Gamedata.m_listItem){
-            if(item.Name == "컵라면"){
+    public void AddFood()
+    {
+        foreach (var item in Gamedata.m_listItem)
+        {
+            if (item.Name == "컵라면")
+            {
                 Gamedata.m_listInventory.Add(item);
                 return;
-            } 
+            }
         }
     }
 
@@ -132,7 +150,8 @@ public class EventPopup : MonoBehaviour{
         }
     }
 
-    public void DescreaseConditionDirector(int amount){
+    public void DescreaseConditionDirector(int amount)
+    {
         MemberManager.Instance.members[PositionType.Director].Condition -= amount;
     }
     public void DescreaseConditionProgrammer(int amount)
@@ -206,7 +225,8 @@ public class EventPopup : MonoBehaviour{
         MemberManager.Instance.members[PositionType.Art].Hunger += amount;
     }
 
-    public void Debuf4Art(){
+    public void Debuf4Art()
+    {
         MemberManager.Instance.members[PositionType.Art].debuf4 = 5;
     }
     public void Debuf4Programmer()
@@ -230,27 +250,28 @@ public class EventPopup : MonoBehaviour{
         MemberManager.Instance.members[PositionType.Director].debuf3 = 5;
     }
 
-    public void DecreaseProcessProgrammer(int amount){
-        ProcessManager.Instance.programmerProgress -= amount;
+    public void DecreaseProcessProgrammer(int amount)
+    {
+        ProcessManager.Instance.ProgrammerProgress -= amount;
     }
     public void DecreaseProcessArt(int amount)
     {
-        ProcessManager.Instance.artProgress -= amount;
+        ProcessManager.Instance.ArtProgress -= amount;
     }
     public void DecreaseProcessDirector(int amount)
     {
-        ProcessManager.Instance.directorProgress -= amount;
+        ProcessManager.Instance.DirectorProgress -= amount;
     }
     public void IncreaserocessProgrammer(int amount)
     {
-        ProcessManager.Instance.programmerProgress += amount;
+        ProcessManager.Instance.ProgrammerProgress += amount;
     }
     public void IncreaseProcessArt(int amount)
     {
-        ProcessManager.Instance.artProgress += amount;
+        ProcessManager.Instance.ArtProgress += amount;
     }
     public void IncreaseProcessDirector(int amount)
     {
-        ProcessManager.Instance.directorProgress += amount;
+        ProcessManager.Instance.DirectorProgress += amount;
     }
 }
