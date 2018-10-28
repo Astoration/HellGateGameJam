@@ -16,21 +16,35 @@ public class IntroScene : MonoBehaviour {
 
     public const float m_fWaitTime = 2.0f;
     public float m_fTickTime;
-    public float m_fLineTime;
+    public float speed = 1.0f;
 
 	void Start () {
         StartCoroutine(FadeIn(m_fWaitTime));
         StartCoroutine(TypingAnimation());
 	}
-	
-	private IEnumerator TypingAnimation()
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            speed = 4.0f;
+
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            speed = 1.0f;
+
+        }
+    }
+
+    private IEnumerator TypingAnimation()
     {
         yield return new WaitForSeconds(m_fWaitTime);
 
         while (m_nNowCount < m_strSynopsis.Length)
         {
             m_textShow.text += m_strSynopsis[m_nNowCount++];
-            yield return new WaitForSeconds(m_fTickTime);
+            yield return new WaitForSeconds(m_fTickTime / speed);
         }
 
         yield return new WaitForSeconds(2.0f);
