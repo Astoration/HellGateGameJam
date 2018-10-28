@@ -44,6 +44,22 @@ public class PopupSchedulePart : MonoBehaviour {
 
     }
 
+    public bool IsUsable{
+        get{
+            if(m_typePart == DevelopmentPart.eProgrammer){
+                return MemberManager.Instance.members[PositionType.Programmer].Usable;
+            }else if (m_typePart == DevelopmentPart.eDirector)
+            {
+                return MemberManager.Instance.members[PositionType.Director].Usable;
+            }
+            else if (m_typePart == DevelopmentPart.eArt)
+            {
+                return MemberManager.Instance.members[PositionType.Art].Usable;
+            }
+            return false;
+        }
+    }
+
     private void SelectIcon(Act act)
     {
         m_imgSelect.gameObject.SetActive(true);
@@ -53,6 +69,7 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnWork()
     {
+        if (!IsUsable) return;
         m_selectAct = Act.eWork;
         SelectIcon(m_selectAct);
         if (preFood)
@@ -70,7 +87,8 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnHot6()
     {
-        if (HasItem("핫식스") <= hotsixCount) return;
+        if (!IsUsable) return;
+        if (HasItem("핫식스") < hotsixCount) return;
         if(!preHotsix)
             hotsixCount += 1;
         preHotsix = true;
@@ -85,6 +103,7 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnRamen()
     {
+        if (!IsUsable) return;
         if (HasItem("컵라면") <= foodCount) return;
         if (!preFood)
             foodCount += 1;
@@ -101,6 +120,7 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnSleep()
     {
+        if (!IsUsable) return;
         m_selectAct = Act.eSleep;
         SelectIcon(m_selectAct);
         if (preFood)
@@ -118,6 +138,7 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnSearch()
     {
+        if (!IsUsable) return;
         m_selectAct = Act.eSearch;
         SelectIcon(m_selectAct);
         if (preFood)
@@ -135,6 +156,7 @@ public class PopupSchedulePart : MonoBehaviour {
 
     public void OnGame()
     {
+        if (!IsUsable) return;
         m_selectAct = Act.eGame;
         SelectIcon(m_selectAct);
         if (preFood)

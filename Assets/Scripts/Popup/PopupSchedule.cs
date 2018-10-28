@@ -193,16 +193,20 @@ public class PopupSchedule : MonoBehaviour {
 
 
     public void OnClose(){
-        if(ProcessManager.Instance.DirectorProgress <= 0){
+        if (MemberManager.Instance.members[PositionType.Director].Condition <= 0)
+        {
             PlayerPrefs.SetInt("endingType", 0);
             PlayerPrefs.Save();
             SceneManager.LoadScene("EndingScene");
-        }else if (ProcessManager.Instance.ProgrammerProgress <= 0)
+        }
+        else if (MemberManager.Instance.members[PositionType.Programmer].Condition <= 0)
         {
+
             PlayerPrefs.SetInt("endingType", 1);
             PlayerPrefs.Save();
             SceneManager.LoadScene("EndingScene");
-        }else if (ProcessManager.Instance.ArtProgress <= 0)
+        }
+        else if (MemberManager.Instance.members[PositionType.Art].Condition <= 0)
         {
             PlayerPrefs.SetInt("endingType", 2);
             PlayerPrefs.Save();
