@@ -8,6 +8,7 @@ public class LevelSelectScene : MonoBehaviour {
 
     public Image m_imgBlack;
     public Text m_textTitle;
+    private bool m_bIsClick = false;
 
     private void Awake()
     {
@@ -21,29 +22,41 @@ public class LevelSelectScene : MonoBehaviour {
 
     public void SelectLevel1()
     {
-        PlayerPrefs.SetInt("difficult", 400);
-        PlayerPrefs.Save();
-        m_textTitle.text = "쉬엄쉬엄 하다 가자구";
+        if (m_bIsClick == false)
+        {
+            m_bIsClick = true;
+            PlayerPrefs.SetInt("difficult", 400);
+            PlayerPrefs.Save();
+            m_textTitle.text = "쉬엄쉬엄 하다 가자구";
 
-        StartCoroutine(FadeOut(2.0f, 1.0f));
+            StartCoroutine(FadeOut(2.0f, 1.0f));
+        }
     }
 
     public void SelectLevel2()
     {
-        PlayerPrefs.SetInt("difficult", 600);
-        PlayerPrefs.Save();
-        m_textTitle.text = "역시 세상은 중간이야.";
+        if (m_bIsClick == false)
+        {
+            m_bIsClick = true;
+            PlayerPrefs.SetInt("difficult", 600);
+            PlayerPrefs.Save();
+            m_textTitle.text = "역시 세상은 중간이야.";
 
-        StartCoroutine(FadeOut(2.0f, 1.0f));
+            StartCoroutine(FadeOut(2.0f, 1.0f));
+        }
     }
 
     public void SelectLevel3()
     {
-        PlayerPrefs.SetInt("difficult", 800);
-        PlayerPrefs.Save();
-        m_textTitle.text = "헬게이트가 열린다. 가즈아아아아!!!";
+        if (m_bIsClick == false)
+        {
+            m_bIsClick = true;
+            PlayerPrefs.SetInt("difficult", 800);
+            PlayerPrefs.Save();
+            m_textTitle.text = "헬게이트가 열린다. 가즈아아아아!!!";
 
-        StartCoroutine(FadeOut(2.0f, 1.0f));
+            StartCoroutine(FadeOut(2.0f, 1.0f));
+        }
     }
 
     public IEnumerator FadeIn(float fadeTime)
