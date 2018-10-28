@@ -16,8 +16,6 @@ public class LevelSelectScene : MonoBehaviour {
 
     public void SelectLevel1()
     {
-        Debug.Log("gdgd");
-
         ProcessManager.Instance.difficult = 700;
         m_textTitle.text = "쉬엄쉬엄 하다 가자구";
 

@@ -47,21 +47,6 @@ public class SelectScene : Singleton<SelectScene> {
                 Debug.Log("<color=red> " + i.Name + ", " + i.UniqueItem + "</color>");
             }
         }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            PopupInventory.Instantiate();
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            PopupSchedule.Instantiate();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            SetRecursionAlpha(m_objCard[0].gameObject, 1.0f);
-        }
     }
 
     private void InitCards()
@@ -110,10 +95,9 @@ public class SelectScene : Singleton<SelectScene> {
                 }
             }
 
+            m_textRemain.text = "남은 카드 수 : " + (m_nTotalCardCount - m_nNowCardCount);
             if (0 == m_nTotalCardCount - m_nNowCardCount)
             {
-                m_textRemain.text = "남은 카드 수 : " + (m_nTotalCardCount - m_nNowCardCount);
-
                 StartCoroutine(StartIEnum2(3.0f));
             }
 
@@ -170,7 +154,7 @@ public class SelectScene : Singleton<SelectScene> {
         // 이제 변수명 짓는게 귀찮다 그냥 짓자. 왈왈
         yield return new WaitForSeconds(time);
 
-        StartCoroutine(ChangeScene("MainScene"));
+        StartCoroutine(ChangeScene("LevelSelectScene"));
     }
 
     public IEnumerator FadeOutObject(GameObject obj, float fadeTime, float waitTime = 0.0f)

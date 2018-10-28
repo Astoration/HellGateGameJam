@@ -52,37 +52,60 @@ public class Gamedata : Singleton<Gamedata> {
     {
         Sprite[] sprites = Resources.LoadAll<Sprite>("Item/Item");
 
-        foreach (Sprite sprite in sprites){
+        foreach (Sprite sprite in sprites) {
 
-            if(sprite.name == "Item_0")
-                m_dicItem.Add("핫식스", sprite);
-
+            if (sprite.name == "Item_0")
+            {
+                if (false == m_dicItem.ContainsKey("핫식스"))
+                    m_dicItem.Add("핫식스", sprite);
+            }
             else if (sprite.name == "Item_1")
-                m_dicItem.Add("야구 방망이", sprite);
-
+            {
+                if (false == m_dicItem.ContainsKey("야구 방망이"))
+                    m_dicItem.Add("야구 방망이", sprite);
+            }
             else if (sprite.name == "Item_2")
-                m_dicItem.Add("위장약", sprite);
+            {
+                if (false == m_dicItem.ContainsKey("위장약"))
+                    m_dicItem.Add("위장약", sprite);
 
+            }
             else if (sprite.name == "Item_3")
-                m_dicItem.Add("사촌 누나의 연락처", sprite);
+            {
+                if (false == m_dicItem.ContainsKey("사촌 누나의 연락처"))
+                    m_dicItem.Add("사촌 누나의 연락처", sprite);
 
+            }
             else if (sprite.name == "Item_4")
-                m_dicItem.Add("타블렛 펜심", sprite);
-
+            {
+                if (false == m_dicItem.ContainsKey("타블렛 펜심"))
+                    m_dicItem.Add("타블렛 펜심", sprite);
+            }
             else if (sprite.name == "Item_5")
-                m_dicItem.Add("토끼 머리띠", sprite);
-
+            {
+                if (false == m_dicItem.ContainsKey("토끼 머리띠"))
+                    m_dicItem.Add("토끼 머리띠", sprite);
+            }
             else if (sprite.name == "Item_6")
-                m_dicItem.Add("컵라면", sprite);
-
+            {
+                if (false == m_dicItem.ContainsKey("컵라면"))
+                    m_dicItem.Add("컵라면", sprite);
+            }
             else if (sprite.name == "Item_8")
-                m_dicItem.Add("담배", sprite);
-
+            {
+                if (false == m_dicItem.ContainsKey("담배"))
+                    m_dicItem.Add("담배", sprite);
+            }
             else if (sprite.name == "Item_10")
-                m_dicItem.Add("치킨", sprite);
-
+            {
+                if (false == m_dicItem.ContainsKey("치킨"))
+                    m_dicItem.Add("치킨", sprite);
+            }
             else if (sprite.name == "Item_11")
-                m_dicItem.Add("무선 키보드", sprite);
+            {
+                if (false == m_dicItem.ContainsKey("무선 키보드"))
+                    m_dicItem.Add("무선 키보드", sprite);
+            }
         }
     }
 
