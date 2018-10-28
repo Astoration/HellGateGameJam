@@ -51,7 +51,7 @@ public class EventPopup : MonoBehaviour{
                 item.GetComponent<Image>().color = Color.white;
                 item.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    ShowResult(result);
+                    ShowResult(result,data,data.choose[index]);
                 });
             }else{
                 item.SetActive(false);
@@ -61,7 +61,7 @@ public class EventPopup : MonoBehaviour{
 
     }
 
-    public void ShowResult(ResultInfo result){
+    public void ShowResult(ResultInfo result,EventData data,string name){
         var resultString = "";
         foreach (var action in result.action)
         {
@@ -76,6 +76,9 @@ public class EventPopup : MonoBehaviour{
             }
         }
         content.text = resultString;
+        if(data.useItem){
+            UseItem(name);
+        }
         int index = 0;
         foreach (var item in chooses)
         {
@@ -95,6 +98,16 @@ public class EventPopup : MonoBehaviour{
                 item.SetActive(false);
             }
             index += 1;
+        }
+    }
+
+    public void UseItem(string name){
+        for (var i = 0; i < Gamedata.m_listInventory.Count;i++){
+            var item = Gamedata.m_listInventory[i];
+            if(item.Name == name){
+                Gamedata.m_listInventory.Remove(item);
+                break;
+            }
         }
     }
 }
