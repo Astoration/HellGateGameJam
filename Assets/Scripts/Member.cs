@@ -132,25 +132,25 @@ public class Member{
         }
         if (Hunger == 0)
         {
-            condition -= 10;
+            Condition -= 10;
             resultString += string.Format("{0}는 굶주려있다. 작업시 개발력 10 추가 감소.\n", positionString);
         }
         if (Sleepy == 0)
         {
-            condition -= 10;
+            Condition -= 10;
             resultString += string.Format("{0}는 잠을 자지 못해 고통받고 있다. 작업시 개발력 10 추가 감소.\n", positionString);
 
         }
         if (0<debuf3){
             debuf3 -= 1;
-            condition -= 10;
+            Condition -= 10;
             resultString += string.Format("{0}는 스트레스로 인해 멘탈이 붕괴됐다. 작업시 개발력 10 추가 감소\n", positionString);
 
         }
         if (0 < debuf4)
         {
             debuf4 -= 1;
-            condition -= 10;
+            Condition -= 10;
             resultString += string.Format("{0}는 부상으로 인해 고통받고 있다. 작업시 개발력 10 추가 감소.\n", positionString);
         }
         resultString += Environment.NewLine;
