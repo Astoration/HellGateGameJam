@@ -448,8 +448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_imgBlack: {fileID: 1743188072}
   m_textShow: {fileID: 194121109}
-  m_fTickTime: 0.15
-  m_fLineTime: 1
+  m_fTickTime: 0.2
+  speed: 1
 --- !u!4 &1526979434
 Transform:
   m_ObjectHideFlags: 0
