@@ -9,13 +9,52 @@ public class ProcessManager : Singleton<ProcessManager> {
     List<EventData> eventList;
     public TextAsset eventJson;
 
-    public int directorProgress = 0;
-    public int programmerProgress = 0;
-    public int artProgress = 0;
+    private int directorProgress = 0;
+    private int programmerProgress = 0;
+    private int artProgress = 0;
 
     public int difficult = 1000;
 
-	// Use this for initialization
+    public int DirectorProgress
+    {
+        get
+        {
+            return directorProgress;
+        }
+
+        set
+        {
+            directorProgress = Mathf.Clamp(value, 0, 2000);
+        }
+    }
+
+    public int ProgrammerProgress
+    {
+        get
+        {
+            return programmerProgress;
+        }
+
+        set
+        {
+            programmerProgress = Mathf.Clamp(value, 0, 2000);
+        }
+    }
+
+    public int ArtProgress
+    {
+        get
+        {
+            return artProgress;
+        }
+
+        set
+        {
+            artProgress = Mathf.Clamp(value,0,2000);
+        }
+    }
+
+    // Use this for initialization
     void Start () {
         difficult = PlayerPrefs.GetInt("difficult", 1100);
         eventList = JsonMapper.ToObject<List<EventData>>(eventJson.text);

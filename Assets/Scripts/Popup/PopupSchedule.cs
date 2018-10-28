@@ -83,17 +83,17 @@ public class PopupSchedule : MonoBehaviour {
         switch(act){
             case PopupSchedulePart.Act.eWork:
                 if(part == PopupSchedulePart.DevelopmentPart.eProgrammer){
-                    ProcessManager.Instance.programmerProgress += MemberManager.Instance.members[PositionType.Programmer].Condition;
+                    ProcessManager.Instance.ProgrammerProgress += MemberManager.Instance.members[PositionType.Programmer].Condition;
                     return MemberManager.Instance.members[PositionType.Programmer].Update(true);
 
                 }
                 else if(part == PopupSchedulePart.DevelopmentPart.eArt){
-                    ProcessManager.Instance.artProgress += MemberManager.Instance.members[PositionType.Art].Condition;
+                    ProcessManager.Instance.ArtProgress += MemberManager.Instance.members[PositionType.Art].Condition;
                     return MemberManager.Instance.members[PositionType.Art].Update(true);
                 }
                 else
                 {
-                    ProcessManager.Instance.directorProgress += MemberManager.Instance.members[PositionType.Director].Condition;
+                    ProcessManager.Instance.DirectorProgress += MemberManager.Instance.members[PositionType.Director].Condition;
                     return MemberManager.Instance.members[PositionType.Director].Update(true);
                 }
             case PopupSchedulePart.Act.eHot6:
@@ -193,23 +193,23 @@ public class PopupSchedule : MonoBehaviour {
 
 
     public void OnClose(){
-        if(ProcessManager.Instance.directorProgress <= 0){
+        if(ProcessManager.Instance.DirectorProgress <= 0){
             PlayerPrefs.SetInt("endingType", 0);
             PlayerPrefs.Save();
             SceneManager.LoadScene("EndingScene");
-        }else if (ProcessManager.Instance.programmerProgress <= 0)
+        }else if (ProcessManager.Instance.ProgrammerProgress <= 0)
         {
             PlayerPrefs.SetInt("endingType", 1);
             PlayerPrefs.Save();
             SceneManager.LoadScene("EndingScene");
-        }else if (ProcessManager.Instance.artProgress <= 0)
+        }else if (ProcessManager.Instance.ArtProgress <= 0)
         {
             PlayerPrefs.SetInt("endingType", 2);
             PlayerPrefs.Save();
             SceneManager.LoadScene("EndingScene");
         }
         if (24<=ProcessManager.Instance.turn){
-            var progress = ProcessManager.Instance.programmerProgress & ProcessManager.Instance.artProgress & ProcessManager.Instance.directorProgress;
+            var progress = ProcessManager.Instance.ProgrammerProgress & ProcessManager.Instance.ArtProgress & ProcessManager.Instance.DirectorProgress;
             if(ProcessManager.Instance.difficult<=progress){
                 PlayerPrefs.SetInt("endingType", 4);
                 PlayerPrefs.Save();
