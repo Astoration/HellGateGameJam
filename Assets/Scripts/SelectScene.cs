@@ -12,6 +12,7 @@ public class SelectScene : Singleton<SelectScene> {
 
  //   public UnityEvent onClick;
     private List<ItemInfo> m_listItem       = new List<ItemInfo>();
+    private List<ItemInfo> m_listDelete     = new List<ItemInfo>();
 
     public Image        m_imgBlack;
     public CardObject[] m_objCard;
@@ -37,13 +38,13 @@ public class SelectScene : Singleton<SelectScene> {
             Debug.Log("----------------- m_listItem -------------------");
             foreach (var i in Gamedata.m_listItem)
             {
-                Debug.Log("<color=red> " + i.Name + ", " + i.Consumable + "</color>");
+                Debug.Log("<color=red> " + i.Name + ", " + i.UniqueItem + "</color>");
             }
 
             Debug.Log("----------------- Inventory -------------------");
             foreach (var i in Gamedata.m_listInventory)
             {
-                Debug.Log("<color=red> " + i.Name + ", " + i.Consumable + "</color>");
+                Debug.Log("<color=red> " + i.Name + ", " + i.UniqueItem + "</color>");
             }
         }
         else if (Input.GetKeyDown(KeyCode.B))
@@ -68,6 +69,9 @@ public class SelectScene : Singleton<SelectScene> {
         m_bIsClick = false;
         m_textRemain.text = "남은 카드 수 : " + (m_nTotalCardCount - m_nNowCardCount);
 
+        if (m_nTotalCardCount - m_nNowCardCount == 0)
+            return;
+
         foreach (var card in m_objCard){
             // 초기화
             card.gameObject.SetActive(true);
@@ -88,21 +92,29 @@ public class SelectScene : Singleton<SelectScene> {
             Gamedata.m_listInventory.Add(info);
 
             // 1회성 아이템 처리
-            if (0 != info.Consumable)
+            if (0 != info.UniqueItem)
             {
                 // 유니크 아이템 습득시 다른 유니크 아이템 삭제
                 foreach(var i in m_listItem)
                 {
-                    if(i.Consumable == 1)
+                    if(i.UniqueItem == 1)
                     {
-                        m_listItem.Remove(i);
+                        // 지금 머리 안돌아가니까 일단 생각나는대로 짜자.
+                        m_listDelete.Add(i);
+                        //m_listItem.Remove(i);
                     }
+                }
+                foreach (var i in m_listDelete )
+                {
+                    m_listItem.Remove(i);
                 }
             }
 
             if (0 == m_nTotalCardCount - m_nNowCardCount)
             {
-                StartCoroutine(ChangeScene("MainScene"));
+                m_textRemain.text = "남은 카드 수 : " + (m_nTotalCardCount - m_nNowCardCount);
+
+                StartCoroutine(StartIEnum2(3.0f));
             }
 
             StartFadeOutCard(info);
@@ -113,16 +125,16 @@ public class SelectScene : Singleton<SelectScene> {
     {
         if(m_objCard[0].m_Iteminfo == info)
         {
-            StartCoroutine(FadeOutObject(m_objCard[0].gameObject, 1.0f, 2.0f));
-            StartCoroutine(FadeOutObject(m_objCard[1].gameObject, 1.5f));
+            StartCoroutine(FadeOutObject(m_objCard[0].gameObject, 0.75f, 1.0f));
+            StartCoroutine(FadeOutObject(m_objCard[1].gameObject, 1.0f));
         }
         else if (m_objCard[1].m_Iteminfo == info)
         {
-            StartCoroutine(FadeOutObject(m_objCard[0].gameObject, 1.5f));
-            StartCoroutine(FadeOutObject(m_objCard[1].gameObject, 1.0f, 2.0f));
+            StartCoroutine(FadeOutObject(m_objCard[0].gameObject, 1.0f));
+            StartCoroutine(FadeOutObject(m_objCard[1].gameObject, 0.75f, 1.0f));
         }
 
-        StartCoroutine(StartIEnum(3.5f));
+        StartCoroutine(StartIEnum(2.5f));
     }
 
     private void SetRecursionAlpha(GameObject obj, float alpha)
@@ -151,6 +163,14 @@ public class SelectScene : Singleton<SelectScene> {
         yield return new WaitForSeconds(time);
 
         InitCards();
+    }
+
+    private IEnumerator StartIEnum2(float time)
+    {
+        // 이제 변수명 짓는게 귀찮다 그냥 짓자. 왈왈
+        yield return new WaitForSeconds(time);
+
+        StartCoroutine(ChangeScene("MainScene"));
     }
 
     public IEnumerator FadeOutObject(GameObject obj, float fadeTime, float waitTime = 0.0f)

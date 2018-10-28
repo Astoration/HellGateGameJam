@@ -28,7 +28,7 @@ public class ItemInfo
 {
     public string Name;             // 아이템명
     public string Image;            // 이미지명
-    public int Consumable;          // 일회성 
+    public int UniqueItem;          // 일회성 
     public string Description;      // 아이템 설명
 }
 
