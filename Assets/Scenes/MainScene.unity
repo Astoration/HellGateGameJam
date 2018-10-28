@@ -1603,9 +1603,6 @@ MonoBehaviour:
   turn: 1
   eventList: []
   eventJson: {fileID: 4900000, guid: 3c9bd788565694ded876af95e602a0ec, type: 3}
-  directorProgress: 0
-  programmerProgress: 0
-  artProgress: 0
   difficult: 1000
 --- !u!4 &1328547721
 Transform:
