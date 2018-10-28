@@ -47,8 +47,10 @@ public class EndingScene : MonoBehaviour {
 
     void Start()
     {
-     //   StartCoroutine(FadeIn(m_fWaitTime));
-      //  StartCoroutine(TypingAnimation());
+        Init((EndingType)PlayerPrefs.GetInt("endingType"));
+        
+        StartCoroutine(FadeIn(m_fWaitTime));
+        StartCoroutine(TypingAnimation());
     }
 
     private void Update()
