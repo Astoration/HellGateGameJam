@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PopupSchedule : MonoBehaviour {
 
@@ -192,6 +193,32 @@ public class PopupSchedule : MonoBehaviour {
 
 
     public void OnClose(){
+        if(ProcessManager.Instance.directorProgress <= 0){
+            PlayerPrefs.SetInt("endingType", 0);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("EndingScene");
+        }else if (ProcessManager.Instance.programmerProgress <= 0)
+        {
+            PlayerPrefs.SetInt("endingType", 1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("EndingScene");
+        }else if (ProcessManager.Instance.artProgress <= 0)
+        {
+            PlayerPrefs.SetInt("endingType", 2);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("EndingScene");
+        }
+        if (24<=ProcessManager.Instance.turn){
+            var progress = ProcessManager.Instance.programmerProgress & ProcessManager.Instance.artProgress & ProcessManager.Instance.directorProgress;
+            if(ProcessManager.Instance.difficult<=progress){
+                PlayerPrefs.SetInt("endingType", 4);
+                PlayerPrefs.Save();
+            }else{
+                PlayerPrefs.SetInt("endingType", 3);
+                PlayerPrefs.Save();
+            }
+            SceneManager.LoadScene("EndingScene");
+        }
         ProcessManager.Instance.InvokeEvent();
         Destroy(gameObject);
     }

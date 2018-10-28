@@ -155,4 +155,102 @@ public class EventPopup : MonoBehaviour{
     {
         MemberManager.Instance.members[PositionType.Art].Condition += amount;
     }
+
+    public void DescreaseSleepyDirector(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Director].Sleepy -= amount;
+    }
+    public void DescreaseSleepyProgrammer(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Programmer].Sleepy -= amount;
+    }
+    public void DescreaseSleepyArt(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Art].Sleepy -= amount;
+    }
+    public void IncreaseSleepyDirector(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Director].Sleepy += amount;
+    }
+    public void IncreaseSleepyProgrammer(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Programmer].Sleepy += amount;
+    }
+    public void IncreaseSleepyArt(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Art].Sleepy += amount;
+    }
+
+    public void DescreaseHungerDirector(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Director].Hunger -= amount;
+    }
+    public void DescreaseHungerProgrammer(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Programmer].Hunger -= amount;
+    }
+    public void DescreaseHungerArt(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Art].Hunger -= amount;
+    }
+    public void IncreaseHungerDirector(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Director].Hunger += amount;
+    }
+    public void IncreaseHungerProgrammer(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Programmer].Hunger += amount;
+    }
+    public void IncreaseHungerArt(int amount)
+    {
+        MemberManager.Instance.members[PositionType.Art].Hunger += amount;
+    }
+
+    public void Debuf4Art(){
+        MemberManager.Instance.members[PositionType.Art].debuf4 = 5;
+    }
+    public void Debuf4Programmer()
+    {
+        MemberManager.Instance.members[PositionType.Programmer].debuf4 = 5;
+    }
+    public void Debuf4Director()
+    {
+        MemberManager.Instance.members[PositionType.Director].debuf4 = 5;
+    }
+    public void Debuf3Art()
+    {
+        MemberManager.Instance.members[PositionType.Art].debuf3 = 5;
+    }
+    public void Debuf3Programmer()
+    {
+        MemberManager.Instance.members[PositionType.Programmer].debuf3 = 5;
+    }
+    public void Debuf3Director()
+    {
+        MemberManager.Instance.members[PositionType.Director].debuf3 = 5;
+    }
+
+    public void DecreaseProcessProgrammer(int amount){
+        ProcessManager.Instance.programmerProgress -= amount;
+    }
+    public void DecreaseProcessArt(int amount)
+    {
+        ProcessManager.Instance.artProgress -= amount;
+    }
+    public void DecreaseProcessDirector(int amount)
+    {
+        ProcessManager.Instance.directorProgress -= amount;
+    }
+    public void IncreaserocessProgrammer(int amount)
+    {
+        ProcessManager.Instance.programmerProgress += amount;
+    }
+    public void IncreaseProcessArt(int amount)
+    {
+        ProcessManager.Instance.artProgress += amount;
+    }
+    public void IncreaseProcessDirector(int amount)
+    {
+        ProcessManager.Instance.directorProgress += amount;
+    }
 }
