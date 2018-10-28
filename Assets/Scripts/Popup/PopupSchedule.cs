@@ -10,6 +10,12 @@ public class PopupSchedule : MonoBehaviour {
 
     public PopupSchedulePart[] m_arrPart;
 
+    public GameObject result;
+
+    public PopupSchedulePart.Act programmerAct = PopupSchedulePart.Act.None;
+    public PopupSchedulePart.Act directorAct = PopupSchedulePart.Act.None;
+    public PopupSchedulePart.Act artAct = PopupSchedulePart.Act.None;
+
     private void Awake()
     {
         m_canvas = FindObjectOfType<Canvas>();
@@ -37,7 +43,7 @@ public class PopupSchedule : MonoBehaviour {
         obj.transform.SetParent(m_canvas.transform);
         popup.GetComponent<RectTransform>().localPosition = Vector3.zero;
         popup.GetComponent<RectTransform>().localScale = Vector3.one;
-
+        popup.name = "PopupSchedule";
         return popup;
     }
 
@@ -46,89 +52,15 @@ public class PopupSchedule : MonoBehaviour {
         // 각 행동에 다른 처리 필요
         Debug.Log(part + ",    " + act);
 
-        switch(part) {
+        switch(part){
             case PopupSchedulePart.DevelopmentPart.eProgrammer:
-                switch(act) {
-                    case PopupSchedulePart.Act.eWork:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eHot6:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eRamen:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eSleep:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eSearch:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eGame:
-
-                        break;
-                }
+                programmerAct = act;
                 break;
             case PopupSchedulePart.DevelopmentPart.eDirector:
-                switch (act)
-                {
-                    case PopupSchedulePart.Act.eWork:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eHot6:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eRamen:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eSleep:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eSearch:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eGame:
-
-                        break;
-                }
+                directorAct = act;
                 break;
             case PopupSchedulePart.DevelopmentPart.eArt:
-                switch (act)
-                {
-                    case PopupSchedulePart.Act.eWork:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eHot6:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eRamen:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eSleep:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eSearch:
-
-                        break;
-
-                    case PopupSchedulePart.Act.eGame:
-
-                        break;
-                }
+                artAct = act;
                 break;
         }
 
@@ -136,7 +68,43 @@ public class PopupSchedule : MonoBehaviour {
 
     public void OnConfirm()
     {
-        Destroy(this.gameObject);
+        result.SetActive(true);
+        result.GetComponentInChildren<Text>().text = "";
+        ProcessManager.Instance.turn += 1;
+        var resultString = "";
+        resultString += DoAct(PopupSchedulePart.DevelopmentPart.eProgrammer, programmerAct);
+        resultString += DoAct(PopupSchedulePart.DevelopmentPart.eArt, artAct);
+        resultString += DoAct(PopupSchedulePart.DevelopmentPart.eDirector, directorAct);
+        result.GetComponentInChildren<Text>().text = resultString;
+    }
+
+    public string DoAct(PopupSchedulePart.DevelopmentPart part,PopupSchedulePart.Act act){
+        switch(act){
+            case PopupSchedulePart.Act.eWork:
+                if(part == PopupSchedulePart.DevelopmentPart.eProgrammer){
+                    ProcessManager.Instance.programmerProgress += MemberManager.Instance.members[PositionType.Programmer].Condition;
+                    return MemberManager.Instance.members[PositionType.Programmer].Update();
+
+                }
+                else if(part == PopupSchedulePart.DevelopmentPart.eArt){
+                    ProcessManager.Instance.artProgress += MemberManager.Instance.members[PositionType.Art].Condition;
+                    return MemberManager.Instance.members[PositionType.Art].Update();
+                }
+                else
+                {
+                    ProcessManager.Instance.directorProgress += MemberManager.Instance.members[PositionType.Director].Condition;
+                    var condition = MemberManager.Instance.members[PositionType.Director].Condition;
+                    return MemberManager.Instance.members[PositionType.Director].Update();
+                }
+                break;
+        }
+        return "";
+    }
+
+
+    public void OnClose(){
+        ProcessManager.Instance.InvokeEvent();
+        Destroy(gameObject);
     }
    
 }

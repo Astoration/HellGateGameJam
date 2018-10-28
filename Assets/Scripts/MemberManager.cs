@@ -9,7 +9,7 @@ public class MemberManager : Singleton<MemberManager> {
         ClearMember();
         foreach (PositionType type in (PositionType[])PositionType.GetValues(typeof(PositionType)))
         {
-            members.Add(type, new Member());
+            members.Add(type, new Member(type));
         }
     }
 

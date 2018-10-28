@@ -401,7 +401,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.54
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114161910681804306
@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bec9da1ac17cdb45a086822ac28a487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: {fileID: 114161910681804306}
   m_textTotalDevelopTime: {fileID: 114161910681804306}
   m_textValue_Director: {fileID: 114495023090405894}
   m_textValue_Programmer: {fileID: 114980351853845652}

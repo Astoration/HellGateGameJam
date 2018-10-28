@@ -19,7 +19,8 @@ public class PopupSchedulePart : MonoBehaviour {
         eRamen,
         eSleep,
         eSearch,
-        eGame
+        eGame,
+        None
     }
 
     public DevelopmentPart  m_typePart;

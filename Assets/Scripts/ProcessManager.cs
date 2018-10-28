@@ -8,6 +8,13 @@ public class ProcessManager : Singleton<ProcessManager> {
     [SerializeField]
     List<EventData> eventList;
     public TextAsset eventJson;
+
+    public int directorProgress = 0;
+    public int programmerProgress = 0;
+    public int artProgress = 0;
+
+    public int difficult = 1000;
+
 	// Use this for initialization
     void Start () {
         eventList = JsonMapper.ToObject<List<EventData>>(eventJson.text);

@@ -30,12 +30,29 @@ public class EventPopup : MonoBehaviour{
             if(index<data.choose.Count){
                 item.SetActive(true);
                 var result = data.results[index];
+                item.GetComponentInChildren<Text>().text = data.choose[index];
                 item.GetComponent<Button>().onClick.RemoveAllListeners();
+                if (data.useItem)
+                {
+                    string itemName = data.choose[index];
+                    bool hasItem = false;
+                    foreach(var inventory in Gamedata.m_listInventory){
+                        if(itemName == inventory.Name){
+                            hasItem = true;
+                        }
+                    }
+                    if (!hasItem&&index!=data.results.Count-1)
+                    {
+                        item.GetComponent<Image>().color = Color.gray;
+                        index += 1;
+                        continue;
+                    }
+                }
+                item.GetComponent<Image>().color = Color.white;
                 item.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     ShowResult(result);
                 });
-                item.GetComponentInChildren<Text>().text = data.choose[index];
             }else{
                 item.SetActive(false);
             }
@@ -46,7 +63,6 @@ public class EventPopup : MonoBehaviour{
 
     public void ShowResult(ResultInfo result){
         var resultString = "";
-
         foreach (var action in result.action)
         {
             if (action.method != null)
@@ -59,7 +75,6 @@ public class EventPopup : MonoBehaviour{
                 resultString += action.log;
             }
         }
-        Debug.Log(resultString);
         content.text = resultString;
         int index = 0;
         foreach (var item in chooses)
@@ -67,6 +82,7 @@ public class EventPopup : MonoBehaviour{
             if (index < 1)
             {
                 item.SetActive(true);
+                item.GetComponent<Image>().color = Color.white;
                 item.GetComponent<Button>().onClick.RemoveAllListeners();
                 item.GetComponent<Button>().onClick.AddListener(() =>
                 {
